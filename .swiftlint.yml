@@ -1,0 +1,25 @@
+disabled_rules:
+- trailing_whitespace
+- force_cast
+#- function_body_length
+- closure_parameter_position
+- void_function_in_ternary
+- line_length
+- empty_enum_arguments
+- type_name
+
+included:
+
+excluded:
+- Pods
+
+line_length:
+
+identifier_name:
+    min_length:
+        warning: 1
+    allowed_symbols: ["_"]
+
+
+trailing_whitespace:
+

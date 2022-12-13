@@ -1,0 +1,88 @@
+PODS:
+  - Alamofire (5.6.2)
+  - Differentiator (5.0.0)
+  - FSCalendar (2.8.4)
+  - ReactorKit (3.2.0):
+    - RxSwift (~> 6.0)
+    - WeakMapTable (~> 1.1)
+  - RxAlamofire (6.1.1):
+    - RxAlamofire/Core (= 6.1.1)
+  - RxAlamofire/Core (6.1.1):
+    - Alamofire (~> 5.4)
+    - RxSwift (~> 6.0)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxDataSources (5.0.0):
+    - Differentiator (~> 5.0)
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - RxGesture (4.0.4):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
+  - RxViewController (2.0.0):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - SnapKit (5.6.0)
+  - SwiftLint (0.49.1)
+  - Then (3.0.0)
+  - URLNavigator (2.4.1)
+  - WeakMapTable (1.2.0)
+
+DEPENDENCIES:
+  - FSCalendar
+  - ReactorKit
+  - RxAlamofire
+  - RxCocoa
+  - RxDataSources
+  - RxGesture
+  - RxSwift
+  - RxViewController
+  - SnapKit
+  - SwiftLint
+  - Then
+  - URLNavigator
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Differentiator
+    - FSCalendar
+    - ReactorKit
+    - RxAlamofire
+    - RxCocoa
+    - RxDataSources
+    - RxGesture
+    - RxRelay
+    - RxSwift
+    - RxViewController
+    - SnapKit
+    - SwiftLint
+    - Then
+    - URLNavigator
+    - WeakMapTable
+
+SPEC CHECKSUMS:
+  Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
+  ReactorKit: e8b11d6b9c415405f381669b095c154a05b59eca
+  RxAlamofire: beb75a1c452d0de225651db4903f5d29d034a620
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
+  RxGesture: f3efb47ed2d26a8082f7b660d4a59970e275a7f8
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  RxViewController: 56486fa0afd629a1d6b5ba077f3b8cd9dc31b5d2
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  SwiftLint: 32ee33ded0636d0905ef6911b2b67bbaeeedafa5
+  Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
+  URLNavigator: 9e277a422a5c131a3e37970c2558e0e866cc22bd
+  WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
+
+PODFILE CHECKSUM: 45ae5bd353e2706e187b71e27ad1dc099ce5cc45
+
+COCOAPODS: 1.11.3

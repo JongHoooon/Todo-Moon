@@ -1,0 +1,6 @@
+module Pods_Todo_Moon_Todo_MoonUITests {
+  umbrella header "Pods-Todo-Moon-Todo-MoonUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
