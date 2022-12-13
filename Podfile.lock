@@ -1,7 +1,6 @@
 PODS:
   - Alamofire (5.6.2)
   - Differentiator (5.0.0)
-  - FSCalendar (2.8.4)
   - ReactorKit (3.2.0):
     - RxSwift (~> 6.0)
     - WeakMapTable (~> 1.1)
@@ -33,7 +32,6 @@ PODS:
   - WeakMapTable (1.2.0)
 
 DEPENDENCIES:
-  - FSCalendar
   - ReactorKit
   - RxAlamofire
   - RxCocoa
@@ -50,7 +48,6 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Differentiator
-    - FSCalendar
     - ReactorKit
     - RxAlamofire
     - RxCocoa
@@ -68,7 +65,6 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
-  FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   ReactorKit: e8b11d6b9c415405f381669b095c154a05b59eca
   RxAlamofire: beb75a1c452d0de225651db4903f5d29d034a620
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
@@ -83,6 +79,6 @@ SPEC CHECKSUMS:
   URLNavigator: 9e277a422a5c131a3e37970c2558e0e866cc22bd
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 45ae5bd353e2706e187b71e27ad1dc099ce5cc45
+PODFILE CHECKSUM: fd2bb8343f8f2042066e281c50bc58d3e38006dc
 
 COCOAPODS: 1.11.3

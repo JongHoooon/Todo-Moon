@@ -21,7 +21,7 @@ target 'Todo-Moon' do
 	pod 'RxViewController'
 	pod 'RxGesture'
 	pod 'RxAlamofire'
-
+  
 	
 	# UI
   
@@ -32,8 +32,7 @@ target 'Todo-Moon' do
 	
 	pod 'Then'
 	pod 'URLNavigator'
-	pod 'FSCalendar'
-
+	# pod 'FSCalendar'
 
 	
   target 'Todo-MoonTests' do
