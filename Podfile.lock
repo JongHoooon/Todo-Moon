@@ -12,6 +12,9 @@ PODS:
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
     - RxSwift (= 6.5.0)
+  - RxCoreData (1.0.1):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
   - RxDataSources (5.0.0):
     - Differentiator (~> 5.0)
     - RxCocoa (~> 6.0)
@@ -35,6 +38,7 @@ DEPENDENCIES:
   - ReactorKit
   - RxAlamofire
   - RxCocoa
+  - RxCoreData
   - RxDataSources
   - RxGesture
   - RxSwift
@@ -51,6 +55,7 @@ SPEC REPOS:
     - ReactorKit
     - RxAlamofire
     - RxCocoa
+    - RxCoreData
     - RxDataSources
     - RxGesture
     - RxRelay
@@ -68,6 +73,7 @@ SPEC CHECKSUMS:
   ReactorKit: e8b11d6b9c415405f381669b095c154a05b59eca
   RxAlamofire: beb75a1c452d0de225651db4903f5d29d034a620
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxCoreData: 4c1686b30499c05b90104eec1a879f41aa1a0a65
   RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
   RxGesture: f3efb47ed2d26a8082f7b660d4a59970e275a7f8
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
@@ -79,6 +85,6 @@ SPEC CHECKSUMS:
   URLNavigator: 9e277a422a5c131a3e37970c2558e0e866cc22bd
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: fd2bb8343f8f2042066e281c50bc58d3e38006dc
+PODFILE CHECKSUM: f980935c3663e0c98aab7922fc16b928fa91b31e
 
 COCOAPODS: 1.11.3

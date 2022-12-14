@@ -1,0 +1,6 @@
+module RxCoreData {
+  umbrella header "RxCoreData-umbrella.h"
+
+  export *
+  module * { export * }
+}

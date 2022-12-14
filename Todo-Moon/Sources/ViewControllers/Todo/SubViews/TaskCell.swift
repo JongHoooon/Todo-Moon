@@ -29,7 +29,6 @@ final class TaskCell: UICollectionViewCell, View {
   
   lazy var textField = UITextField().then {
     $0.placeholder = "입력"
-    $0.delegate = self
   }
   
   var isChecked: Bool = false
@@ -65,12 +64,12 @@ final class TaskCell: UICollectionViewCell, View {
       .disposed(by: self.disposeBag)
     
     // state
-    reactor.state.asObservable().map { $0.task }
-      .subscribe(onNext: { [weak self] task in
+    reactor.state.asObservable().map { $0.todo }
+      .subscribe(onNext: { [weak self] todo in
         guard let self = self else { return }
         
-        self.textField.text = task.contents
-        let icon: UIImage? = task.isChecked ?? false ? Icon.checkSquareIcon : Icon.squareIcon
+        self.textField.text = todo.contents
+        let icon: UIImage? = todo.isChecked ? Icon.checkSquareIcon : Icon.squareIcon
         self.checkButton.setImage(icon, for: .normal)
       })
       .disposed(by: self.disposeBag)
@@ -79,44 +78,6 @@ final class TaskCell: UICollectionViewCell, View {
       .bind(to: textField.rx.isEnabled)
       .disposed(by: self.disposeBag)
   }
-}
-
-// MARK: - TextField
-
-extension TaskCell: UITextFieldDelegate {
-  
-  //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-  //
-  //        if isEditMode == false {
-  //            taskVM = TaskViewModel(task: Task(
-  //                taskId: 0,
-  //                userId: 0,
-  //                contents: textField.text ?? "",
-  //                isChecked: false)
-  //            )
-  //            textField.isEnabled = false
-  //            if textField.text?.isEmpty == false {
-  //                guard let taskVM = taskVM else { return false }
-  //                textFieldNotEmptyCompletion?(taskVM)
-  //            } else {
-  //                textFieldEmptyCompletion?()
-  //            }
-  //        } else {
-  //            guard let task = taskVM?.task else { return false }
-  //            taskVM = TaskViewModel(task: Task(
-  //                taskId: task.taskId,
-  //                userId: task.userId,
-  //                contents: textField.text ?? "",
-  //                isChecked: task.isChecked ?? false)
-  //            )
-  //            guard let taskVM = taskVM else { return false }
-  //            textField.isEnabled = false
-  //            isEditMode = false
-  //            textFieldEditCompletion?(taskVM, indexPath ?? [])
-  //        }
-  //
-  //        return true
-  //    }
 }
 
 // MARK: - Private

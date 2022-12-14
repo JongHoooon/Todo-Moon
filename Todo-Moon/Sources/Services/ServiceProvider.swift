@@ -6,10 +6,12 @@
 //
 
 protocol ServiceProviderType: AnyObject {
-    
+    var coreDataService: CoreDataService { get }
+    var todoService: TodoService { get }
 }
 
 final class ServiceProvider: ServiceProviderType {
-    
+    lazy var coreDataService: CoreDataService = CoreDataService(provider: self)
+    lazy var todoService: TodoService = TodoService(provider: self)
 }
 

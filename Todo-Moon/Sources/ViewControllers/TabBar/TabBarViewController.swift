@@ -54,7 +54,7 @@ extension TabBarViewController {
     private func setTabBar() {
         self.tabBar.backgroundColor = .systemGray6
 
-        let todoViewController = UIViewController().then {
+        let todoViewController = TodoViewController(TodoViewReactor(self.provider)).then {
             $0.tabBarItem = todoTabBarItem
         }
         

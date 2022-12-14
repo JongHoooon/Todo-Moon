@@ -30,6 +30,17 @@
 		ED6B79D1294867DA00CADC8E /* TodoViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79CB294867D900CADC8E /* TodoViewReactor.swift */; };
 		ED6B79D2294867DA00CADC8E /* TaskHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79CC294867DA00CADC8E /* TaskHeaderCell.swift */; };
 		ED6B79D52948690A00CADC8E /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = ED6B79D42948690A00CADC8E /* FSCalendar */; };
+		ED6B79DA29486A3F00CADC8E /* TaskEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79D729486A3F00CADC8E /* TaskEditViewController.swift */; };
+		ED6B79DB29486A3F00CADC8E /* TaskEditViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79D829486A3F00CADC8E /* TaskEditViewReactor.swift */; };
+		ED6B79DC29486A3F00CADC8E /* TaskEditPresentaionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79D929486A3F00CADC8E /* TaskEditPresentaionController.swift */; };
+		ED6B79DE29486AC100CADC8E /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79DD29486AC100CADC8E /* Identifier.swift */; };
+		ED6B79E129486B2B00CADC8E /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79E029486B2B00CADC8E /* Todo.swift */; };
+		ED6B79E329486BDD00CADC8E /* AlertActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79E229486BDD00CADC8E /* AlertActionType.swift */; };
+		ED6B79ED2948A24C00CADC8E /* CoreDateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79EC2948A24C00CADC8E /* CoreDateService.swift */; };
+		ED6B79EF2948A52C00CADC8E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79EE2948A52C00CADC8E /* UIView+Extension.swift */; };
+		ED6B79F12948A5E200CADC8E /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79F02948A5E200CADC8E /* BaseService.swift */; };
+		ED6B79F32948C13E00CADC8E /* TodoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79F22948C13E00CADC8E /* TodoService.swift */; };
+		ED6B79F52948F54300CADC8E /* Array+SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79F42948F54300CADC8E /* Array+SectionModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +93,17 @@
 		ED6B79CA294867D900CADC8E /* TaskHeaderCellReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskHeaderCellReactor.swift; sourceTree = "<group>"; };
 		ED6B79CB294867D900CADC8E /* TodoViewReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoViewReactor.swift; sourceTree = "<group>"; };
 		ED6B79CC294867DA00CADC8E /* TaskHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskHeaderCell.swift; sourceTree = "<group>"; };
+		ED6B79D729486A3F00CADC8E /* TaskEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskEditViewController.swift; sourceTree = "<group>"; };
+		ED6B79D829486A3F00CADC8E /* TaskEditViewReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskEditViewReactor.swift; sourceTree = "<group>"; };
+		ED6B79D929486A3F00CADC8E /* TaskEditPresentaionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskEditPresentaionController.swift; sourceTree = "<group>"; };
+		ED6B79DD29486AC100CADC8E /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
+		ED6B79E029486B2B00CADC8E /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		ED6B79E229486BDD00CADC8E /* AlertActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertActionType.swift; sourceTree = "<group>"; };
+		ED6B79EC2948A24C00CADC8E /* CoreDateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDateService.swift; sourceTree = "<group>"; };
+		ED6B79EE2948A52C00CADC8E /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		ED6B79F02948A5E200CADC8E /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		ED6B79F22948C13E00CADC8E /* TodoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoService.swift; sourceTree = "<group>"; };
+		ED6B79F42948F54300CADC8E /* Array+SectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+SectionModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +163,7 @@
 			children = (
 				ED6B79B62948653800CADC8E /* .swiftlint.yml */,
 				ED6B797E2948633B00CADC8E /* Todo-Moon */,
+				ED6B79882948633B00CADC8E /* Todo_Moon.xcdatamodeld */,
 				ED6B79982948633B00CADC8E /* Todo-MoonTests */,
 				ED6B79A22948633B00CADC8E /* Todo-MoonUITests */,
 				ED6B797D2948633B00CADC8E /* Products */,
@@ -165,7 +188,6 @@
 				ED6B79B22948637000CADC8E /* Sources */,
 				ED6B79B32948639F00CADC8E /* Resources */,
 				ED6B79B4294863A800CADC8E /* Support */,
-				ED6B79882948633B00CADC8E /* Todo_Moon.xcdatamodeld */,
 			);
 			path = "Todo-Moon";
 			sourceTree = "<group>";
@@ -193,6 +215,7 @@
 				ED6B797F2948633B00CADC8E /* AppDelegate.swift */,
 				ED6B79812948633B00CADC8E /* SceneDelegate.swift */,
 				ED6B79B82948659B00CADC8E /* Extensions */,
+				ED6B79DF29486B0B00CADC8E /* Models */,
 				ED6B79BB294865C700CADC8E /* Services */,
 				ED6B79C02948662B00CADC8E /* ViewControllers */,
 			);
@@ -220,6 +243,9 @@
 			isa = PBXGroup;
 			children = (
 				ED6B79B9294865BA00CADC8E /* UIColor+Extension.swift */,
+				ED6B79DD29486AC100CADC8E /* Identifier.swift */,
+				ED6B79EE2948A52C00CADC8E /* UIView+Extension.swift */,
+				ED6B79F42948F54300CADC8E /* Array+SectionModel.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -228,6 +254,10 @@
 			isa = PBXGroup;
 			children = (
 				ED6B79BE2948661800CADC8E /* ServiceProvider.swift */,
+				ED6B79F02948A5E200CADC8E /* BaseService.swift */,
+				ED6B79EC2948A24C00CADC8E /* CoreDateService.swift */,
+				ED6B79F22948C13E00CADC8E /* TodoService.swift */,
+				ED6B79E229486BDD00CADC8E /* AlertActionType.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -253,14 +283,33 @@
 		ED6B79C6294867C400CADC8E /* Todo */ = {
 			isa = PBXGroup;
 			children = (
+				ED6B79C7294867D900CADC8E /* TodoViewController.swift */,
+				ED6B79CB294867D900CADC8E /* TodoViewReactor.swift */,
+				ED6B79D62948694A00CADC8E /* SubViews */,
+			);
+			path = Todo;
+			sourceTree = "<group>";
+		};
+		ED6B79D62948694A00CADC8E /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
 				ED6B79C9294867D900CADC8E /* TaskCell.swift */,
 				ED6B79C8294867D900CADC8E /* TaskCellReactor.swift */,
 				ED6B79CC294867DA00CADC8E /* TaskHeaderCell.swift */,
 				ED6B79CA294867D900CADC8E /* TaskHeaderCellReactor.swift */,
-				ED6B79C7294867D900CADC8E /* TodoViewController.swift */,
-				ED6B79CB294867D900CADC8E /* TodoViewReactor.swift */,
+				ED6B79D929486A3F00CADC8E /* TaskEditPresentaionController.swift */,
+				ED6B79D729486A3F00CADC8E /* TaskEditViewController.swift */,
+				ED6B79D829486A3F00CADC8E /* TaskEditViewReactor.swift */,
 			);
-			path = Todo;
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		ED6B79DF29486B0B00CADC8E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ED6B79E029486B2B00CADC8E /* Todo.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -491,17 +540,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED6B79CD294867DA00CADC8E /* TodoViewController.swift in Sources */,
+				ED6B79DA29486A3F00CADC8E /* TaskEditViewController.swift in Sources */,
 				ED6B79CE294867DA00CADC8E /* TaskCellReactor.swift in Sources */,
 				ED6B79BF2948661800CADC8E /* ServiceProvider.swift in Sources */,
 				ED6B798A2948633B00CADC8E /* Todo_Moon.xcdatamodeld in Sources */,
 				ED6B79D2294867DA00CADC8E /* TaskHeaderCell.swift in Sources */,
 				ED6B79CF294867DA00CADC8E /* TaskCell.swift in Sources */,
+				ED6B79DB29486A3F00CADC8E /* TaskEditViewReactor.swift in Sources */,
 				ED6B79802948633B00CADC8E /* AppDelegate.swift in Sources */,
+				ED6B79F32948C13E00CADC8E /* TodoService.swift in Sources */,
 				ED6B79822948633B00CADC8E /* SceneDelegate.swift in Sources */,
+				ED6B79F52948F54300CADC8E /* Array+SectionModel.swift in Sources */,
+				ED6B79F12948A5E200CADC8E /* BaseService.swift in Sources */,
 				ED6B79C32948666200CADC8E /* TabBarViewController.swift in Sources */,
+				ED6B79E329486BDD00CADC8E /* AlertActionType.swift in Sources */,
+				ED6B79DC29486A3F00CADC8E /* TaskEditPresentaionController.swift in Sources */,
 				ED6B79D0294867DA00CADC8E /* TaskHeaderCellReactor.swift in Sources */,
 				ED6B79D1294867DA00CADC8E /* TodoViewReactor.swift in Sources */,
+				ED6B79EF2948A52C00CADC8E /* UIView+Extension.swift in Sources */,
+				ED6B79DE29486AC100CADC8E /* Identifier.swift in Sources */,
+				ED6B79ED2948A24C00CADC8E /* CoreDateService.swift in Sources */,
 				ED6B79C52948669C00CADC8E /* BaseViewController.swift in Sources */,
+				ED6B79E129486B2B00CADC8E /* Todo.swift in Sources */,
 				ED6B79BA294865BA00CADC8E /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -600,7 +660,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -654,7 +714,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
