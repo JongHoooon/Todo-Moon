@@ -10,12 +10,15 @@ import RxDataSources
 import CoreData
 import RxCoreData
 
-struct Todo: Equatable, IdentifiableType {
+struct TodoViewModel: Equatable, Identifiable {
     
-    let identity: String
+    let id: String
     var contents: String
     var isChecked: Bool
     let date: Date
+     
+    
+    /*
     
     /// todo create할때 사용
     init(contents: String, date: Date = Date()) {
@@ -84,4 +87,7 @@ extension Todo: Persistable {
         } catch {
             print(error)
         }
-    }}
+    }
+    
+    */
+}

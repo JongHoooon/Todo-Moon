@@ -21,7 +21,6 @@ target 'Todo-Moon' do
 	pod 'RxViewController'
 	pod 'RxGesture'
 	pod 'RxAlamofire'
-	pod 'RxCoreData'
   # pod 'NSObject+Rx'
   
 	
