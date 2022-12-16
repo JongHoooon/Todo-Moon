@@ -12,6 +12,8 @@ import Then
 
 protocol CoreDataServiceType {
     
+    // MARK: - Todo
+    
     @discardableResult
     func createTodo(content: String, date: Date) -> Observable<Todo>
 
@@ -29,11 +31,28 @@ protocol CoreDataServiceType {
 
     @discardableResult
     func changeDate(todo: Todo, date: Date) -> Observable<Todo>
+    
+    // MARK: - Memo
+    
+    @discardableResult
+    func createMemo(title: String, contents: String) -> Observable<Memo>
+    
+    @discardableResult
+    func fetchMemos() -> Observable<[Memo]>
+    
+    @discardableResult
+    func editMemo(memo: Memo, title: String, contents: String) -> Observable<Memo>
+    
+    @discardableResult
+    func deleteMemo(memo: Memo) -> Observable<Memo>
+
 }
 
 final class CoreDataService: BaseService, CoreDataServiceType {
     
-    lazy var todoPersistentContainer = NSPersistentContainer(name: "Todo").then {
+    // MARK: - Todo
+    
+    lazy var persistentContainer = NSPersistentContainer(name: "Todo_Moon").then {
         $0.loadPersistentStores { description, error in
             if let error = error {
                 fatalError("DEBUG failed to initialize Core Data \(error)")
@@ -43,21 +62,21 @@ final class CoreDataService: BaseService, CoreDataServiceType {
         }
     }
     
-    private var todoMainContext: NSManagedObjectContext {
-        return todoPersistentContainer.viewContext
+    private var mainContext: NSManagedObjectContext {
+        return persistentContainer.viewContext
     }
     
     @discardableResult
     func createTodo(content: String, date: Date) -> RxSwift.Observable<Todo> {
-        let todo = Todo(context: todoMainContext)
+        let todo = Todo(context: mainContext)
         todo.contents = content
         todo.date = date
         
         do {
-            try todoMainContext.save()
+            try mainContext.save()
             return Observable.just(todo)
         } catch {
-            print("DEBUG Failed to dave a todo \(error)")
+            print("DEBUG Failed to save a todo \(error)")
             return Observable.error(error)
         }
     }
@@ -67,9 +86,10 @@ final class CoreDataService: BaseService, CoreDataServiceType {
         let fetchRequest: NSFetchRequest<Todo> = Todo.fetchRequest()
         
         do {
-            let todos = try todoMainContext.fetch(fetchRequest)
+            let todos = try mainContext.fetch(fetchRequest)
             return Observable.just(todos)
         } catch {
+            print("DEBUG todos fetch 실패")
             return Observable.just([])
         }
     }
@@ -79,10 +99,10 @@ final class CoreDataService: BaseService, CoreDataServiceType {
         todo.contents = contents
         
         do {
-            try todoMainContext.save()
+            try mainContext.save()
             return Observable.just(todo)
         } catch {
-            todoMainContext.rollback()
+            mainContext.rollback()
             print("DEBUG todo contnents 변경 실패! \n \(error)")
             return Observable.error(error)
         }
@@ -90,13 +110,13 @@ final class CoreDataService: BaseService, CoreDataServiceType {
     
     @discardableResult
     func deleteTodo(todo: Todo) -> Observable<Todo> {
-        todoMainContext.delete(todo)
+        mainContext.delete(todo)
         
         do {
-            try todoMainContext.save()
+            try mainContext.save()
             return Observable.just(todo)
         } catch {
-            todoMainContext.rollback()
+            mainContext.rollback()
             print("DEBUG todo 삭제 실패! \n \(error)")
             return Observable.error(error)
         }
@@ -104,28 +124,87 @@ final class CoreDataService: BaseService, CoreDataServiceType {
     
     @discardableResult
     func checkTodo(todo: Todo) -> Observable<Todo> {
-    
+        
         do {
-            try todoMainContext.save()
+            try mainContext.save()
             return Observable.just(todo)
         } catch {
-            todoMainContext.rollback()
+            mainContext.rollback()
             print("DEBUG todo 체크 실패! \n \(error)")
             return Observable.error(error)
         }
     }
-
+    
     @discardableResult
     func changeDate(todo: Todo, date: Date) -> Observable<Todo> {
         todo.date = date
         
         do {
-            try todoMainContext.save()
+            try mainContext.save()
             return Observable.just(todo)
         } catch {
-            todoMainContext.rollback()
+            mainContext.rollback()
             print("DEBUG todo 날짜 변경 실패 \n \(error)")
             return Observable.error(error)
+        }
+    }
+    
+    // MARK: - Memo
+    
+    @discardableResult
+    func createMemo(title: String, contents: String) -> RxSwift.Observable<Memo> {
+        let memo = Memo(context: mainContext)
+        memo.title = title
+        memo.contents = contents
+        
+        do {
+            try mainContext.save()
+            return Observable.just(memo)
+        } catch {
+            print("DEBUG memo 저장 실패")
+            return Observable.error(error)
+        }
+    }
+    
+    @discardableResult
+    func fetchMemos() -> RxSwift.Observable<[Memo]> {
+        let fetchRequest: NSFetchRequest<Memo> = Memo.fetchRequest()
+        
+        do {
+            let memos = try mainContext.fetch(fetchRequest)
+            return .just(memos)
+        } catch {
+            print("DEBUG memos fetch 실패")
+            return .just([])
+        }
+    }
+    
+    @discardableResult
+    func editMemo(memo: Memo, title: String, contents: String) -> RxSwift.Observable<Memo> {
+        memo.title = title
+        memo.contents = contents
+        
+        do {
+            try mainContext.save()
+            return .just(memo)
+        } catch {
+            mainContext.rollback()
+            print("DEBUG memo 편집 실패")
+            return .error(error)
+        }
+    }
+    
+    @discardableResult
+    func deleteMemo(memo: Memo) -> RxSwift.Observable<Memo> {
+        mainContext.delete(memo)
+        
+        do {
+            try mainContext.save()
+            return .just(memo)
+        } catch {
+            mainContext.rollback()
+            print("DEBUG memo 삭제 실패")
+            return .error(error)
         }
     }
 }

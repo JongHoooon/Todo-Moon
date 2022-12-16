@@ -34,14 +34,27 @@
 		ED6B79DB29486A3F00CADC8E /* TaskEditViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79D829486A3F00CADC8E /* TaskEditViewReactor.swift */; };
 		ED6B79DC29486A3F00CADC8E /* TaskEditPresentaionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79D929486A3F00CADC8E /* TaskEditPresentaionController.swift */; };
 		ED6B79DE29486AC100CADC8E /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79DD29486AC100CADC8E /* Identifier.swift */; };
-		ED6B79E129486B2B00CADC8E /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79E029486B2B00CADC8E /* Todo.swift */; };
 		ED6B79E329486BDD00CADC8E /* AlertActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79E229486BDD00CADC8E /* AlertActionType.swift */; };
 		ED6B79ED2948A24C00CADC8E /* CoreDateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79EC2948A24C00CADC8E /* CoreDateService.swift */; };
 		ED6B79EF2948A52C00CADC8E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79EE2948A52C00CADC8E /* UIView+Extension.swift */; };
 		ED6B79F12948A5E200CADC8E /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79F02948A5E200CADC8E /* BaseService.swift */; };
 		ED6B79F32948C13E00CADC8E /* TodoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79F22948C13E00CADC8E /* TodoService.swift */; };
 		ED6B79F52948F54300CADC8E /* Array+SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79F42948F54300CADC8E /* Array+SectionModel.swift */; };
-		EDBBB06F294C82770016B813 /* Todo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB06D294C82770016B813 /* Todo.xcdatamodeld */; };
+		EDBBB06F294C82770016B813 /* Todo_Moon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB06D294C82770016B813 /* Todo_Moon.xcdatamodeld */; };
+		EDBBB0AE294CD7690016B813 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB098294CD7690016B813 /* WriteViewController.swift */; };
+		EDBBB0AF294CD7690016B813 /* WriteViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB099294CD7690016B813 /* WriteViewReactor.swift */; };
+		EDBBB0B0294CD7690016B813 /* NumberSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB09A294CD7690016B813 /* NumberSelectView.swift */; };
+		EDBBB0B1294CD7690016B813 /* MemoViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB09C294CD7690016B813 /* MemoViewReactor.swift */; };
+		EDBBB0B2294CD7690016B813 /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB09D294CD7690016B813 /* MemoViewController.swift */; };
+		EDBBB0B3294CD7690016B813 /* MemoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB0A1294CD7690016B813 /* MemoViewCell.swift */; };
+		EDBBB0B4294CD7690016B813 /* MemoViewCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB0A2294CD7690016B813 /* MemoViewCellReactor.swift */; };
+		EDBBB0B5294CD7690016B813 /* BoardCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB0A4294CD7690016B813 /* BoardCollectionHeaderView.swift */; };
+		EDBBB0B6294CD7690016B813 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB0A6294CD7690016B813 /* CategoryView.swift */; };
+		EDBBB0B7294CD7690016B813 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB0A7294CD7690016B813 /* CategoryCollectionViewCell.swift */; };
+		EDBBB0B8294CD7690016B813 /* AutoSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB0A9294CD7690016B813 /* AutoSlideView.swift */; };
+		EDBBB0B9294CD7690016B813 /* AutoSlideCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB0AA294CD7690016B813 /* AutoSlideCollectionViewCell.swift */; };
+		EDBBB0BA294CD7690016B813 /* MemoDetailViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB0AC294CD7690016B813 /* MemoDetailViewReactor.swift */; };
+		EDBBB0BB294CD7690016B813 /* MemoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB0AD294CD7690016B813 /* MemoDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,7 +111,6 @@
 		ED6B79D829486A3F00CADC8E /* TaskEditViewReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskEditViewReactor.swift; sourceTree = "<group>"; };
 		ED6B79D929486A3F00CADC8E /* TaskEditPresentaionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskEditPresentaionController.swift; sourceTree = "<group>"; };
 		ED6B79DD29486AC100CADC8E /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
-		ED6B79E029486B2B00CADC8E /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		ED6B79E229486BDD00CADC8E /* AlertActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertActionType.swift; sourceTree = "<group>"; };
 		ED6B79EC2948A24C00CADC8E /* CoreDateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDateService.swift; sourceTree = "<group>"; };
 		ED6B79EE2948A52C00CADC8E /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -106,6 +118,20 @@
 		ED6B79F22948C13E00CADC8E /* TodoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoService.swift; sourceTree = "<group>"; };
 		ED6B79F42948F54300CADC8E /* Array+SectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+SectionModel.swift"; sourceTree = "<group>"; };
 		EDBBB06E294C82770016B813 /* Todo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Todo.xcdatamodel; sourceTree = "<group>"; };
+		EDBBB098294CD7690016B813 /* WriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
+		EDBBB099294CD7690016B813 /* WriteViewReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteViewReactor.swift; sourceTree = "<group>"; };
+		EDBBB09A294CD7690016B813 /* NumberSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberSelectView.swift; sourceTree = "<group>"; };
+		EDBBB09C294CD7690016B813 /* MemoViewReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoViewReactor.swift; sourceTree = "<group>"; };
+		EDBBB09D294CD7690016B813 /* MemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
+		EDBBB0A1294CD7690016B813 /* MemoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoViewCell.swift; sourceTree = "<group>"; };
+		EDBBB0A2294CD7690016B813 /* MemoViewCellReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoViewCellReactor.swift; sourceTree = "<group>"; };
+		EDBBB0A4294CD7690016B813 /* BoardCollectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardCollectionHeaderView.swift; sourceTree = "<group>"; };
+		EDBBB0A6294CD7690016B813 /* CategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		EDBBB0A7294CD7690016B813 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		EDBBB0A9294CD7690016B813 /* AutoSlideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoSlideView.swift; sourceTree = "<group>"; };
+		EDBBB0AA294CD7690016B813 /* AutoSlideCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoSlideCollectionViewCell.swift; sourceTree = "<group>"; };
+		EDBBB0AC294CD7690016B813 /* MemoDetailViewReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoDetailViewReactor.swift; sourceTree = "<group>"; };
+		EDBBB0AD294CD7690016B813 /* MemoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,7 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				ED6B79B22948637000CADC8E /* Sources */,
-				EDBBB06D294C82770016B813 /* Todo.xcdatamodeld */,
+				EDBBB06D294C82770016B813 /* Todo_Moon.xcdatamodeld */,
 				ED6B79B32948639F00CADC8E /* Resources */,
 				ED6B79B4294863A800CADC8E /* Support */,
 			);
@@ -270,7 +296,8 @@
 			children = (
 				ED6B79C42948669C00CADC8E /* BaseViewController.swift */,
 				ED6B79C12948664A00CADC8E /* TabBar */,
-				ED6B79C6294867C400CADC8E /* TodoView */,
+				ED6B79C6294867C400CADC8E /* Todo */,
+				EDBBB096294CD7690016B813 /* Memo */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -283,14 +310,14 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
-		ED6B79C6294867C400CADC8E /* TodoView */ = {
+		ED6B79C6294867C400CADC8E /* Todo */ = {
 			isa = PBXGroup;
 			children = (
 				ED6B79C7294867D900CADC8E /* TodoViewController.swift */,
 				ED6B79CB294867D900CADC8E /* TodoViewReactor.swift */,
 				ED6B79D62948694A00CADC8E /* SubViews */,
 			);
-			path = TodoView;
+			path = Todo;
 			sourceTree = "<group>";
 		};
 		ED6B79D62948694A00CADC8E /* SubViews */ = {
@@ -310,9 +337,101 @@
 		ED6B79DF29486B0B00CADC8E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				ED6B79E029486B2B00CADC8E /* Todo.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		EDBBB096294CD7690016B813 /* Memo */ = {
+			isa = PBXGroup;
+			children = (
+				EDBBB09B294CD7690016B813 /* MemoView */,
+				EDBBB0AB294CD7690016B813 /* MemoDetailView */,
+				EDBBB097294CD7690016B813 /* WriteView */,
+				EDBBB09E294CD7690016B813 /* SubViews */,
+			);
+			path = Memo;
+			sourceTree = "<group>";
+		};
+		EDBBB097294CD7690016B813 /* WriteView */ = {
+			isa = PBXGroup;
+			children = (
+				EDBBB098294CD7690016B813 /* WriteViewController.swift */,
+				EDBBB099294CD7690016B813 /* WriteViewReactor.swift */,
+				EDBBB09A294CD7690016B813 /* NumberSelectView.swift */,
+			);
+			path = WriteView;
+			sourceTree = "<group>";
+		};
+		EDBBB09B294CD7690016B813 /* MemoView */ = {
+			isa = PBXGroup;
+			children = (
+				EDBBB09C294CD7690016B813 /* MemoViewReactor.swift */,
+				EDBBB09D294CD7690016B813 /* MemoViewController.swift */,
+			);
+			path = MemoView;
+			sourceTree = "<group>";
+		};
+		EDBBB09E294CD7690016B813 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				EDBBB09F294CD7690016B813 /* MemoView */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		EDBBB09F294CD7690016B813 /* MemoView */ = {
+			isa = PBXGroup;
+			children = (
+				EDBBB0A0294CD7690016B813 /* Cell */,
+				EDBBB0A3294CD7690016B813 /* Header */,
+			);
+			path = MemoView;
+			sourceTree = "<group>";
+		};
+		EDBBB0A0294CD7690016B813 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EDBBB0A1294CD7690016B813 /* MemoViewCell.swift */,
+				EDBBB0A2294CD7690016B813 /* MemoViewCellReactor.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		EDBBB0A3294CD7690016B813 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				EDBBB0A4294CD7690016B813 /* BoardCollectionHeaderView.swift */,
+				EDBBB0A5294CD7690016B813 /* CategoryView */,
+				EDBBB0A8294CD7690016B813 /* AutoSlideView */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		EDBBB0A5294CD7690016B813 /* CategoryView */ = {
+			isa = PBXGroup;
+			children = (
+				EDBBB0A6294CD7690016B813 /* CategoryView.swift */,
+				EDBBB0A7294CD7690016B813 /* CategoryCollectionViewCell.swift */,
+			);
+			path = CategoryView;
+			sourceTree = "<group>";
+		};
+		EDBBB0A8294CD7690016B813 /* AutoSlideView */ = {
+			isa = PBXGroup;
+			children = (
+				EDBBB0A9294CD7690016B813 /* AutoSlideView.swift */,
+				EDBBB0AA294CD7690016B813 /* AutoSlideCollectionViewCell.swift */,
+			);
+			path = AutoSlideView;
+			sourceTree = "<group>";
+		};
+		EDBBB0AB294CD7690016B813 /* MemoDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				EDBBB0AC294CD7690016B813 /* MemoDetailViewReactor.swift */,
+				EDBBB0AD294CD7690016B813 /* MemoDetailViewController.swift */,
+			);
+			path = MemoDetailView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -543,30 +662,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED4DB7CF294C7ED300EE13FE /* Date+Extension.swift in Sources */,
+				EDBBB0BB294CD7690016B813 /* MemoDetailViewController.swift in Sources */,
+				EDBBB0AF294CD7690016B813 /* WriteViewReactor.swift in Sources */,
 				ED6B79CD294867DA00CADC8E /* TodoViewController.swift in Sources */,
 				ED6B79DA29486A3F00CADC8E /* TaskEditViewController.swift in Sources */,
+				EDBBB0B1294CD7690016B813 /* MemoViewReactor.swift in Sources */,
+				EDBBB0B6294CD7690016B813 /* CategoryView.swift in Sources */,
+				EDBBB0BA294CD7690016B813 /* MemoDetailViewReactor.swift in Sources */,
 				ED6B79CE294867DA00CADC8E /* TaskCellReactor.swift in Sources */,
 				ED6B79BF2948661800CADC8E /* ServiceProvider.swift in Sources */,
 				ED6B79D2294867DA00CADC8E /* TaskHeaderCell.swift in Sources */,
 				ED6B79CF294867DA00CADC8E /* TaskCell.swift in Sources */,
 				ED6B79DB29486A3F00CADC8E /* TaskEditViewReactor.swift in Sources */,
+				EDBBB0B2294CD7690016B813 /* MemoViewController.swift in Sources */,
 				ED6B79802948633B00CADC8E /* AppDelegate.swift in Sources */,
+				EDBBB0B0294CD7690016B813 /* NumberSelectView.swift in Sources */,
 				ED6B79F32948C13E00CADC8E /* TodoService.swift in Sources */,
 				ED6B79822948633B00CADC8E /* SceneDelegate.swift in Sources */,
 				ED6B79F52948F54300CADC8E /* Array+SectionModel.swift in Sources */,
+				EDBBB0B4294CD7690016B813 /* MemoViewCellReactor.swift in Sources */,
 				ED6B79F12948A5E200CADC8E /* BaseService.swift in Sources */,
+				EDBBB0B5294CD7690016B813 /* BoardCollectionHeaderView.swift in Sources */,
+				EDBBB0B7294CD7690016B813 /* CategoryCollectionViewCell.swift in Sources */,
 				ED6B79C32948666200CADC8E /* TabBarViewController.swift in Sources */,
 				ED6B79E329486BDD00CADC8E /* AlertActionType.swift in Sources */,
 				ED6B79DC29486A3F00CADC8E /* TaskEditPresentaionController.swift in Sources */,
 				ED6B79D0294867DA00CADC8E /* TaskHeaderCellReactor.swift in Sources */,
+				EDBBB0B3294CD7690016B813 /* MemoViewCell.swift in Sources */,
 				ED6B79D1294867DA00CADC8E /* TodoViewReactor.swift in Sources */,
+				EDBBB0AE294CD7690016B813 /* WriteViewController.swift in Sources */,
 				ED6B79EF2948A52C00CADC8E /* UIView+Extension.swift in Sources */,
 				ED6B79DE29486AC100CADC8E /* Identifier.swift in Sources */,
 				ED6B79ED2948A24C00CADC8E /* CoreDateService.swift in Sources */,
-				EDBBB06F294C82770016B813 /* Todo.xcdatamodeld in Sources */,
+				EDBBB06F294C82770016B813 /* Todo_Moon.xcdatamodeld in Sources */,
+				EDBBB0B8294CD7690016B813 /* AutoSlideView.swift in Sources */,
 				ED6B79C52948669C00CADC8E /* BaseViewController.swift in Sources */,
-				ED6B79E129486B2B00CADC8E /* Todo.swift in Sources */,
 				ED6B79BA294865BA00CADC8E /* UIColor+Extension.swift in Sources */,
+				EDBBB0B9294CD7690016B813 /* AutoSlideCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -935,13 +1067,13 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		EDBBB06D294C82770016B813 /* Todo.xcdatamodeld */ = {
+		EDBBB06D294C82770016B813 /* Todo_Moon.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				EDBBB06E294C82770016B813 /* Todo.xcdatamodel */,
 			);
 			currentVersion = EDBBB06E294C82770016B813 /* Todo.xcdatamodel */;
-			path = Todo.xcdatamodeld;
+			path = Todo_Moon.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

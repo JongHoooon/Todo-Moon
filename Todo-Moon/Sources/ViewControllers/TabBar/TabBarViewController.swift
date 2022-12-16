@@ -58,7 +58,7 @@ extension TabBarViewController {
             $0.tabBarItem = todoTabBarItem
         }
         
-        let memoViewController = UIViewController().then {
+        let memoViewController = UIViewController() .then {
             $0.tabBarItem = memoTabBarItem
         }
         
