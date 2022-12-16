@@ -39,7 +39,7 @@ final class TodoViewReactor: Reactor {
     enum Action {
         case load
         case selectedDay(Date)
-        case selectedId(String)
+        case selectedId(Int)
         
         case tapToggle
     }
@@ -47,7 +47,7 @@ final class TodoViewReactor: Reactor {
     enum Mutation {
         case setTodos([Todo])
         case setSelectedDayList(Date)
-        case selectedId(String)
+        case selectedId(Int)
         
         case insertSectionItem(IndexPath, TaskListSection.Item, Todo)
         case deleteSectionItem(IndexPath)
@@ -66,7 +66,7 @@ final class TodoViewReactor: Reactor {
         
         var todos: [Todo]
         var selectedDay: Date = Date()
-        var selectedID: String = ""
+        var selectedID: Int = 0
         
         var isWeekScope: Bool = true
     }
@@ -74,7 +74,7 @@ final class TodoViewReactor: Reactor {
     let provider: ServiceProviderType
     let initialState: State
     let todoRelay = BehaviorRelay<String>(value: "")
-    let checkedCellIdRelay = BehaviorRelay<String>(value: "")
+    let checkedCellIdRelay = BehaviorRelay<Int>(value: 0)
     
     // MARK: - Initialize
     
@@ -126,7 +126,7 @@ final class TodoViewReactor: Reactor {
                 let alert = UIAlertController(title: "Todo", message: nil, preferredStyle: .alert)
                 for action in actions {
                     let alerAction = UIAlertAction(title: action.title, style: action.style) { _ in
-                                            
+                        
                         observer.onNext(action)
                         observer.onCompleted()
                     }
@@ -176,40 +176,49 @@ final class TodoViewReactor: Reactor {
         case .delete:
             guard let indexPath = self.indexPath(forTodoID: currentState.selectedID,
                                                  from: currentState) else { return .empty() }
-                        
-            let todo = currentState.todos.first { $0.identity == currentState.selectedID }
-            guard let todo = todo else { return .empty() }
-            self.provider.coreDataService.deleteTodo(todo: todo)
             
-            return .just(.deleteSectionItem(indexPath))
+            let todo = currentState.todos.first { $0.objectID.hashValue == currentState.selectedID }
+            guard let todo = todo else { return .empty() }
+            
+            
+            // TODO: 성공 전달되는 코드 맞는지???
+            return self.provider.coreDataService.deleteTodo(todo: todo).map { _ in
+                return .deleteSectionItem(indexPath)
+            }
             
         case .edit:
             guard let indexPath = self.indexPath(forTodoID: currentState.selectedID,
                                                  from: currentState) else { return .empty() }
             
-            let todo = currentState.todos.first { $0.identity == currentState.selectedID }
-            guard var todo = todo else { return .empty() }
+            let todo = currentState.todos.first { $0.objectID.hashValue == currentState.selectedID }
+            guard let todo = todo else { return .empty() }
             todo.contents = self.todoRelay.value
             
             let reactor = TaskCellReactor(self.provider,
                                           todo: todo,
                                           checkRelay: self.checkedCellIdRelay)
             
-            self.provider.coreDataService.editTodo(contents: self.todoRelay.value, todo: todo)
-            
-            return .just(.updateSectionItem(indexPath, reactor))
+            return self.provider.coreDataService.editTodoContents(contents: self.todoRelay.value, todo: todo).map { _ in
+                return .updateSectionItem(indexPath, reactor)
+            }
             
         case .check:
             guard let indexPath = self.indexPath(forTodoID: checkedCellIdRelay.value,
                                                  from: currentState) else { return .empty() }
             
-            var todo = currentState.sections[indexPath.section].items[indexPath.item].currentState.todo
+            let todo = currentState.sections[indexPath.section].items[indexPath.item].currentState.todo
+            todo.isChecked.toggle()
             let reactor = TaskCellReactor(self.provider,
                                           todo: todo,
                                           checkRelay: self.checkedCellIdRelay)
-                        
-            self.provider.coreDataService.checkTodo(todo: todo)
-            return .just(.updateCheckedSectionItem(indexPath, reactor))
+            
+            return self.provider.coreDataService.checkTodo(todo: todo)
+                .map { _ in  // isChecked 토글된 todo
+                    
+                    print("토글 완료!!")
+                    
+                    return .updateSectionItem(indexPath, reactor)
+                }
             
         case .changeTomorrow:
             guard let indexPath = self.indexPath(forTodoID: currentState.selectedID,
@@ -247,14 +256,8 @@ final class TodoViewReactor: Reactor {
             state.sections.insert(sectionItem, at: indexPath)
             state.todos.insert(task, at: state.todos.count)
             
-            print("-----------------------------------------------------------")
-            print(indexPath)
-            print(state.sections[0].items.map { $0.currentState.todo.contents })
-            print(state.todos.map { $0.contents })
-            print("-----------------------------------------------------------")
-            
         case let .setTodos(todos):
-            let currentTasks = todos.filter { $0.date.asFormattedString() ==
+            let currentTasks = todos.filter { $0.date?.asFormattedString() ==
                 Date().asFormattedString() }
             
             state.todos = todos
@@ -269,11 +272,11 @@ final class TodoViewReactor: Reactor {
             state.selectedDay = date
             
             let todos = state.todos
-            let selectedDayTodos = todos.filter { $0.date.asFormattedString() ==
+            let selectedDayTodos = todos.filter { $0.date?.asFormattedString() ==
                 date.asFormattedString() }
             let sectionItems = selectedDayTodos.map { TaskCellReactor(self.provider,
-                                                                  todo: $0,
-                                                                  checkRelay: self.checkedCellIdRelay)}
+                                                                      todo: $0,
+                                                                      checkRelay: self.checkedCellIdRelay)}
             let sectionModel = TaskHeaderCellReactor(self.provider)
             let section = TaskListSection(model: sectionModel, items: sectionItems)
             state.sections = [section]
@@ -285,19 +288,21 @@ final class TodoViewReactor: Reactor {
             
         case let .deleteSectionItem(indexPath):
             state.sections.remove(at: indexPath)
-            state.todos = state.todos.filter { $0.identity != state.selectedID }
+            state.todos = state.todos.filter { $0.objectID.hashValue != state.selectedID }
             
         case let .updateSectionItem(indexPath, sectionItem):
             state.sections[indexPath] = sectionItem
+            print(sectionItem.currentState.todo.isChecked)
             
-            if let index = state.todos.firstIndex(where: { $0.identity == state.selectedID }) {
+            if let index = state.todos.firstIndex(where: { $0.objectID.hashValue == state.selectedID }) {
                 state.todos[index].contents = todoRelay.value
             }
             
         case let .updateCheckedSectionItem(indexPath, sectionItem):
             state.sections[indexPath] = sectionItem
             
-            if let index = state.todos.firstIndex(where: { $0.identity == checkedCellIdRelay.value }) {
+            if let index = state.todos.firstIndex(where: { $0.objectID.hashValue ==
+                checkedCellIdRelay.value }) {
                 state.todos[index].isChecked.toggle()
             }
         case .tapToggle:
@@ -308,13 +313,13 @@ final class TodoViewReactor: Reactor {
             state.todos.insert(task, at: state.todos.count)
             
             // 삭제
-            state.todos = state.todos.filter { $0.identity != state.selectedID }
+            state.todos = state.todos.filter { $0.objectID.hashValue != state.selectedID }
             state.sections.remove(at: indexPath)
             
         case let .doToday(indexPath, task):
             state.todos.insert(task, at: state.todos.count)
             
-            state.todos = state.todos.filter { $0.identity != state.selectedID }
+            state.todos = state.todos.filter { $0.objectID.hashValue != state.selectedID }
             state.sections.remove(at: indexPath)
         }
         
@@ -326,12 +331,12 @@ final class TodoViewReactor: Reactor {
 
 extension TodoViewReactor {
     
-    private func indexPath(forTodoID todoID: String, from state: State) -> IndexPath? {
+    private func indexPath(forTodoID todoID: Int, from state: State) -> IndexPath? {
         let section = 0
         let item = state.sections[section].items.firstIndex { reactor in
-            reactor.currentState.todo.identity == todoID
+            reactor.currentState.todo.objectID.hashValue == todoID
         }
-            
+        
         if let item = item {
             return IndexPath(item: item, section: section)
         } else {

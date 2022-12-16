@@ -13,7 +13,6 @@
 		ED4DB7CF294C7ED300EE13FE /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DB7CE294C7ED300EE13FE /* Date+Extension.swift */; };
 		ED6B79802948633B00CADC8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B797F2948633B00CADC8E /* AppDelegate.swift */; };
 		ED6B79822948633B00CADC8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79812948633B00CADC8E /* SceneDelegate.swift */; };
-		ED6B798A2948633B00CADC8E /* Todo_Moon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79882948633B00CADC8E /* Todo_Moon.xcdatamodeld */; };
 		ED6B798C2948633B00CADC8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED6B798B2948633B00CADC8E /* Assets.xcassets */; };
 		ED6B798F2948633B00CADC8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED6B798D2948633B00CADC8E /* LaunchScreen.storyboard */; };
 		ED6B799A2948633B00CADC8E /* Todo_MoonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79992948633B00CADC8E /* Todo_MoonTests.swift */; };
@@ -42,6 +41,7 @@
 		ED6B79F12948A5E200CADC8E /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79F02948A5E200CADC8E /* BaseService.swift */; };
 		ED6B79F32948C13E00CADC8E /* TodoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79F22948C13E00CADC8E /* TodoService.swift */; };
 		ED6B79F52948F54300CADC8E /* Array+SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79F42948F54300CADC8E /* Array+SectionModel.swift */; };
+		EDBBB06F294C82770016B813 /* Todo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB06D294C82770016B813 /* Todo.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +75,6 @@
 		ED6B797C2948633B00CADC8E /* Todo-Moon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Todo-Moon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED6B797F2948633B00CADC8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED6B79812948633B00CADC8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ED6B79892948633B00CADC8E /* Todo_Moon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Todo_Moon.xcdatamodel; sourceTree = "<group>"; };
 		ED6B798B2948633B00CADC8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED6B798E2948633B00CADC8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED6B79902948633B00CADC8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -106,6 +105,7 @@
 		ED6B79F02948A5E200CADC8E /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		ED6B79F22948C13E00CADC8E /* TodoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoService.swift; sourceTree = "<group>"; };
 		ED6B79F42948F54300CADC8E /* Array+SectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+SectionModel.swift"; sourceTree = "<group>"; };
+		EDBBB06E294C82770016B813 /* Todo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Todo.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,7 +165,6 @@
 			children = (
 				ED6B79B62948653800CADC8E /* .swiftlint.yml */,
 				ED6B797E2948633B00CADC8E /* Todo-Moon */,
-				ED6B79882948633B00CADC8E /* Todo_Moon.xcdatamodeld */,
 				ED6B79982948633B00CADC8E /* Todo-MoonTests */,
 				ED6B79A22948633B00CADC8E /* Todo-MoonUITests */,
 				ED6B797D2948633B00CADC8E /* Products */,
@@ -188,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				ED6B79B22948637000CADC8E /* Sources */,
+				EDBBB06D294C82770016B813 /* Todo.xcdatamodeld */,
 				ED6B79B32948639F00CADC8E /* Resources */,
 				ED6B79B4294863A800CADC8E /* Support */,
 			);
@@ -270,7 +270,7 @@
 			children = (
 				ED6B79C42948669C00CADC8E /* BaseViewController.swift */,
 				ED6B79C12948664A00CADC8E /* TabBar */,
-				ED6B79C6294867C400CADC8E /* Todo */,
+				ED6B79C6294867C400CADC8E /* TodoView */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -283,14 +283,14 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
-		ED6B79C6294867C400CADC8E /* Todo */ = {
+		ED6B79C6294867C400CADC8E /* TodoView */ = {
 			isa = PBXGroup;
 			children = (
 				ED6B79C7294867D900CADC8E /* TodoViewController.swift */,
 				ED6B79CB294867D900CADC8E /* TodoViewReactor.swift */,
 				ED6B79D62948694A00CADC8E /* SubViews */,
 			);
-			path = Todo;
+			path = TodoView;
 			sourceTree = "<group>";
 		};
 		ED6B79D62948694A00CADC8E /* SubViews */ = {
@@ -547,7 +547,6 @@
 				ED6B79DA29486A3F00CADC8E /* TaskEditViewController.swift in Sources */,
 				ED6B79CE294867DA00CADC8E /* TaskCellReactor.swift in Sources */,
 				ED6B79BF2948661800CADC8E /* ServiceProvider.swift in Sources */,
-				ED6B798A2948633B00CADC8E /* Todo_Moon.xcdatamodeld in Sources */,
 				ED6B79D2294867DA00CADC8E /* TaskHeaderCell.swift in Sources */,
 				ED6B79CF294867DA00CADC8E /* TaskCell.swift in Sources */,
 				ED6B79DB29486A3F00CADC8E /* TaskEditViewReactor.swift in Sources */,
@@ -564,6 +563,7 @@
 				ED6B79EF2948A52C00CADC8E /* UIView+Extension.swift in Sources */,
 				ED6B79DE29486AC100CADC8E /* Identifier.swift in Sources */,
 				ED6B79ED2948A24C00CADC8E /* CoreDateService.swift in Sources */,
+				EDBBB06F294C82770016B813 /* Todo.xcdatamodeld in Sources */,
 				ED6B79C52948669C00CADC8E /* BaseViewController.swift in Sources */,
 				ED6B79E129486B2B00CADC8E /* Todo.swift in Sources */,
 				ED6B79BA294865BA00CADC8E /* UIColor+Extension.swift in Sources */,
@@ -935,13 +935,13 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		ED6B79882948633B00CADC8E /* Todo_Moon.xcdatamodeld */ = {
+		EDBBB06D294C82770016B813 /* Todo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				ED6B79892948633B00CADC8E /* Todo_Moon.xcdatamodel */,
+				EDBBB06E294C82770016B813 /* Todo.xcdatamodel */,
 			);
-			currentVersion = ED6B79892948633B00CADC8E /* Todo_Moon.xcdatamodel */;
-			path = Todo_Moon.xcdatamodeld;
+			currentVersion = EDBBB06E294C82770016B813 /* Todo.xcdatamodel */;
+			path = Todo.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

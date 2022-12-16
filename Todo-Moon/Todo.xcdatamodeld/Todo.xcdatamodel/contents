@@ -3,7 +3,6 @@
     <entity name="Todo" representedClassName="Todo" syncable="YES" codeGenerationType="class">
         <attribute name="contents" attributeType="String"/>
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="identity" attributeType="String"/>
         <attribute name="isChecked" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
     </entity>
 </model>
