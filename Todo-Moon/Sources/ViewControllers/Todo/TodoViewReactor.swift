@@ -75,11 +75,6 @@ final class TodoViewReactor: Reactor {
     let initialState: State
     let todoRelay = BehaviorRelay<String>(value: "")
     let checkedCellIdRelay = BehaviorRelay<String>(value: "")
-    let dateFormatter = DateFormatter().then {
-        $0.dateFormat = "yyyy-MM-dd"
-        $0.locale = Locale(identifier: "ko_kr")
-        $0.timeZone = TimeZone(identifier: "KST")
-    }
     
     // MARK: - Initialize
     
@@ -125,11 +120,13 @@ final class TodoViewReactor: Reactor {
     func mutate(headerEvent: HeaderEvent) -> Observable<Mutation> {
         switch headerEvent {
         case .create:
+            
             let observer = Observable.create { observer in
                 let actions: [TaskEditAlertAction] = [.leave, .submit]
                 let alert = UIAlertController(title: "Todo", message: nil, preferredStyle: .alert)
                 for action in actions {
                     let alerAction = UIAlertAction(title: action.title, style: action.style) { _ in
+                                            
                         observer.onNext(action)
                         observer.onCompleted()
                     }
@@ -149,7 +146,6 @@ final class TodoViewReactor: Reactor {
                     alert.dismiss(animated: true)
                 }
             }
-            
             // TODO: weak self?
             return observer
                 .flatMap { alertAction -> Observable<Mutation> in
@@ -162,7 +158,7 @@ final class TodoViewReactor: Reactor {
                         let count = self.currentState.sections[0].items.count
                         let indexPath = IndexPath(item: count, section: 0)
                         
-                        return self.provider.coreDataService.createTodo(content: self.todoRelay.value)
+                        return self.provider.coreDataService.createTodo(content: self.todoRelay.value, date: self.currentState.selectedDay)
                             .map { todo in
                                 let reactor = TaskCellReactor(self.provider,
                                                               todo: todo,
@@ -176,7 +172,6 @@ final class TodoViewReactor: Reactor {
     }
     
     func mutate(editEvent: EditEvent) -> Observable<Mutation> {
-        
         switch editEvent {
         case .delete:
             guard let indexPath = self.indexPath(forTodoID: currentState.selectedID,
@@ -200,14 +195,13 @@ final class TodoViewReactor: Reactor {
                                           todo: todo,
                                           checkRelay: self.checkedCellIdRelay)
             
-            self.provider.coreDataService.editTodo(contents: self.todoRelay.value,todo: todo)
+            self.provider.coreDataService.editTodo(contents: self.todoRelay.value, todo: todo)
             
             return .just(.updateSectionItem(indexPath, reactor))
             
         case .check:
             guard let indexPath = self.indexPath(forTodoID: checkedCellIdRelay.value,
                                                  from: currentState) else { return .empty() }
-            
             
             var todo = currentState.sections[indexPath.section].items[indexPath.item].currentState.todo
             let reactor = TaskCellReactor(self.provider,
@@ -253,14 +247,20 @@ final class TodoViewReactor: Reactor {
             state.sections.insert(sectionItem, at: indexPath)
             state.todos.insert(task, at: state.todos.count)
             
+            print("-----------------------------------------------------------")
+            print(indexPath)
+            print(state.sections[0].items.map { $0.currentState.todo.contents })
+            print(state.todos.map { $0.contents })
+            print("-----------------------------------------------------------")
+            
         case let .setTodos(todos):
-            let currentTasks = todos.filter { dateFormatter.string(from: $0.date) ==
-                dateFormatter.string(from: Date())}
+            let currentTasks = todos.filter { $0.date.asFormattedString() ==
+                Date().asFormattedString() }
             
             state.todos = todos
             let sectionItems = currentTasks.map { TaskCellReactor(self.provider,
                                                                   todo: $0,
-                                                                  checkRelay: self.checkedCellIdRelay)}
+                                                                  checkRelay: self.checkedCellIdRelay) }
             let sectionModel = TaskHeaderCellReactor(self.provider)
             let section = TaskListSection(model: sectionModel, items: sectionItems)
             state.sections = [section]
@@ -269,14 +269,16 @@ final class TodoViewReactor: Reactor {
             state.selectedDay = date
             
             let todos = state.todos
-            let currentTasks = todos.filter { dateFormatter.string(from: $0.date) ==
-                dateFormatter.string(from: date)}
-            let sectionItems = currentTasks.map { TaskCellReactor(self.provider,
+            let selectedDayTodos = todos.filter { $0.date.asFormattedString() ==
+                date.asFormattedString() }
+            let sectionItems = selectedDayTodos.map { TaskCellReactor(self.provider,
                                                                   todo: $0,
                                                                   checkRelay: self.checkedCellIdRelay)}
             let sectionModel = TaskHeaderCellReactor(self.provider)
             let section = TaskListSection(model: sectionModel, items: sectionItems)
             state.sections = [section]
+            
+            print(state.sections.first?.items.map { $0.currentState.todo.contents })
             
         case let .selectedId(ID):
             state.selectedID = ID
@@ -354,8 +356,8 @@ extension TodoViewReactor {
     }
     
     private func isToday(day: Date) -> Bool {
-        let todayString = self.dateFormatter.string(from: Date())
-        let dayStrgin = self.dateFormatter.string(from: day)
+        let todayString = Date().asFormattedString()
+        let dayStrgin = day.asFormattedString()
         
         if todayString == dayStrgin {
             return true

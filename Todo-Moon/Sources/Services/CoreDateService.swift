@@ -14,7 +14,7 @@ import Then
 protocol CoreDataServiceType {
     
     @discardableResult
-    func createTodo(content: String) -> Observable<Todo>
+    func createTodo(content: String, date: Date) -> Observable<Todo>
     
     @discardableResult
     func fetchTodos() -> Observable<[Todo]>
@@ -51,8 +51,8 @@ final class CoreDataService: BaseService, CoreDataServiceType {
     }
     
     @discardableResult
-    func createTodo(content: String) -> Observable<Todo> {
-        let todo = Todo(contents: content)
+    func createTodo(content: String, date: Date = Date()) -> Observable<Todo> {
+        let todo = Todo(contents: content, date: date)
         
         do {
             _ = try mainContext.rx.update(todo)
@@ -115,5 +115,4 @@ final class CoreDataService: BaseService, CoreDataServiceType {
             return Observable.error(error)
         }
     }
-    
 }

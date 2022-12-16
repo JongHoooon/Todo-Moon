@@ -18,16 +18,11 @@ struct Todo: Equatable, IdentifiableType {
     let date: Date
     
     /// todo create할때 사용
-    init(contents: String) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateFormatter.locale = Locale(identifier: "ko_kr")
-        dateFormatter.timeZone = TimeZone(identifier: "KST")
-        
+    init(contents: String, date: Date = Date()) {
         self.identity = UUID().uuidString
         self.contents = contents
         self.isChecked = false
-        self.date = Date()
+        self.date = date
     }
     
     /// contents 변경시 사용
@@ -75,7 +70,11 @@ extension Todo: Persistable {
     }
     
     func update(_ entity: NSManagedObject) {
-        entity.setValue(UUID().uuidString, forKey: "identity")
+        
+        // 문제 발견!
+        let modelId = identity.isEmpty ? UUID().uuidString : identity
+        
+        entity.setValue(modelId, forKey: "identity")
         entity.setValue(contents, forKey: "contents")
         entity.setValue(isChecked, forKey: "isChecked")
         entity.setValue(date, forKey: "date")
@@ -85,5 +84,4 @@ extension Todo: Persistable {
         } catch {
             print(error)
         }
-    }
-}
+    }}

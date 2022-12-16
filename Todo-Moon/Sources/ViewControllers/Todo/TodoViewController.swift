@@ -15,7 +15,6 @@ import Then
 import SnapKit
 import FSCalendar
 
-
 class TodoViewController: BaseViewController, View {
     
     // MARK: - Constant
@@ -120,7 +119,6 @@ class TodoViewController: BaseViewController, View {
             TaskCell.self,
             forCellWithReuseIdentifier: TaskCell.identifier
         )
-        
     }
     
     // MARK: - Lifecycle
@@ -190,7 +188,13 @@ class TodoViewController: BaseViewController, View {
         
         // state
         
-        reactor.state.asObservable().map { $0.sections }
+        reactor.state.asObservable().map {
+        
+            
+            print("---------------뷰컨----------------------")
+            print($0.sections.first?.items.map { $0.currentState.todo.contents })
+            
+            return $0.sections }
             .bind(to: self.taskCollectionView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)
         

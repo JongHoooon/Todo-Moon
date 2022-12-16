@@ -10,6 +10,7 @@
 		3F2A6022E4D7D837F52AB829 /* libPods-Todo-Moon-Todo-MoonUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 559F3BD695E5D1A0520243D3 /* libPods-Todo-Moon-Todo-MoonUITests.a */; };
 		827E876F5445CF8ED084EC84 /* libPods-Todo-MoonTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0ED1B78371403C0EBD7736A /* libPods-Todo-MoonTests.a */; };
 		A61E2ABDA8C68C84CF4D0EB6 /* libPods-Todo-Moon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08AC156BE406D88EE58DF398 /* libPods-Todo-Moon.a */; };
+		ED4DB7CF294C7ED300EE13FE /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DB7CE294C7ED300EE13FE /* Date+Extension.swift */; };
 		ED6B79802948633B00CADC8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B797F2948633B00CADC8E /* AppDelegate.swift */; };
 		ED6B79822948633B00CADC8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79812948633B00CADC8E /* SceneDelegate.swift */; };
 		ED6B798A2948633B00CADC8E /* Todo_Moon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED6B79882948633B00CADC8E /* Todo_Moon.xcdatamodeld */; };
@@ -70,6 +71,7 @@
 		8D66C03F90535A1CB396129A /* Pods-Todo-Moon-Todo-MoonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todo-Moon-Todo-MoonUITests.release.xcconfig"; path = "Target Support Files/Pods-Todo-Moon-Todo-MoonUITests/Pods-Todo-Moon-Todo-MoonUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B328A8703F1625F6143C5DE4 /* Pods-Todo-Moon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todo-Moon.release.xcconfig"; path = "Target Support Files/Pods-Todo-Moon/Pods-Todo-Moon.release.xcconfig"; sourceTree = "<group>"; };
 		E0ED1B78371403C0EBD7736A /* libPods-Todo-MoonTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Todo-MoonTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED4DB7CE294C7ED300EE13FE /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		ED6B797C2948633B00CADC8E /* Todo-Moon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Todo-Moon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED6B797F2948633B00CADC8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED6B79812948633B00CADC8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				ED6B79DD29486AC100CADC8E /* Identifier.swift */,
 				ED6B79EE2948A52C00CADC8E /* UIView+Extension.swift */,
 				ED6B79F42948F54300CADC8E /* Array+SectionModel.swift */,
+				ED4DB7CE294C7ED300EE13FE /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED4DB7CF294C7ED300EE13FE /* Date+Extension.swift in Sources */,
 				ED6B79CD294867DA00CADC8E /* TodoViewController.swift in Sources */,
 				ED6B79DA29486A3F00CADC8E /* TaskEditViewController.swift in Sources */,
 				ED6B79CE294867DA00CADC8E /* TaskCellReactor.swift in Sources */,
