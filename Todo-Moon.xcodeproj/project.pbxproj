@@ -54,8 +54,9 @@
 		EDBBB0B9294CD7690016B813 /* AutoSlideCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB0AA294CD7690016B813 /* AutoSlideCollectionViewCell.swift */; };
 		EDBBB0BA294CD7690016B813 /* MemoDetailViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB0AC294CD7690016B813 /* MemoDetailViewReactor.swift */; };
 		EDBBB0BB294CD7690016B813 /* MemoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB0AD294CD7690016B813 /* MemoDetailViewController.swift */; };
-		EDBBB0BE294CFF8F0016B813 /* GroupEditViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB0BC294CFF8F0016B813 /* GroupEditViewReactor.swift */; };
-		EDBBB0BF294CFF8F0016B813 /* GroupEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB0BD294CFF8F0016B813 /* GroupEditViewController.swift */; };
+		EDBBB0BE294CFF8F0016B813 /* MemoEditViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB0BC294CFF8F0016B813 /* MemoEditViewReactor.swift */; };
+		EDBBB0BF294CFF8F0016B813 /* MemoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB0BD294CFF8F0016B813 /* MemoEditViewController.swift */; };
+		EDBBB0C2294D05C00016B813 /* MemoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBBB0C1294D05C00016B813 /* MemoService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,8 +133,9 @@
 		EDBBB0AA294CD7690016B813 /* AutoSlideCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoSlideCollectionViewCell.swift; sourceTree = "<group>"; };
 		EDBBB0AC294CD7690016B813 /* MemoDetailViewReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoDetailViewReactor.swift; sourceTree = "<group>"; };
 		EDBBB0AD294CD7690016B813 /* MemoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoDetailViewController.swift; sourceTree = "<group>"; };
-		EDBBB0BC294CFF8F0016B813 /* GroupEditViewReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupEditViewReactor.swift; sourceTree = "<group>"; };
-		EDBBB0BD294CFF8F0016B813 /* GroupEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupEditViewController.swift; sourceTree = "<group>"; };
+		EDBBB0BC294CFF8F0016B813 /* MemoEditViewReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoEditViewReactor.swift; sourceTree = "<group>"; };
+		EDBBB0BD294CFF8F0016B813 /* MemoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoEditViewController.swift; sourceTree = "<group>"; };
+		EDBBB0C1294D05C00016B813 /* MemoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +290,7 @@
 				ED6B79F02948A5E200CADC8E /* BaseService.swift */,
 				ED6B79EC2948A24C00CADC8E /* CoreDateService.swift */,
 				ED6B79F22948C13E00CADC8E /* TodoService.swift */,
+				EDBBB0C1294D05C00016B813 /* MemoService.swift */,
 				ED6B79E229486BDD00CADC8E /* AlertActionType.swift */,
 			);
 			path = Services;
@@ -439,8 +442,8 @@
 		EDBBB0C0294CFF920016B813 /* EditView */ = {
 			isa = PBXGroup;
 			children = (
-				EDBBB0BD294CFF8F0016B813 /* GroupEditViewController.swift */,
-				EDBBB0BC294CFF8F0016B813 /* GroupEditViewReactor.swift */,
+				EDBBB0BD294CFF8F0016B813 /* MemoEditViewController.swift */,
+				EDBBB0BC294CFF8F0016B813 /* MemoEditViewReactor.swift */,
 			);
 			path = EditView;
 			sourceTree = "<group>";
@@ -675,12 +678,12 @@
 				ED4DB7CF294C7ED300EE13FE /* Date+Extension.swift in Sources */,
 				EDBBB0BB294CD7690016B813 /* MemoDetailViewController.swift in Sources */,
 				EDBBB0AF294CD7690016B813 /* MemoWriteViewReactor.swift in Sources */,
-				EDBBB0BF294CFF8F0016B813 /* GroupEditViewController.swift in Sources */,
+				EDBBB0BF294CFF8F0016B813 /* MemoEditViewController.swift in Sources */,
 				ED6B79CD294867DA00CADC8E /* TodoViewController.swift in Sources */,
 				ED6B79DA29486A3F00CADC8E /* TaskEditViewController.swift in Sources */,
 				EDBBB0B1294CD7690016B813 /* MemoViewReactor.swift in Sources */,
 				EDBBB0B6294CD7690016B813 /* CategoryView.swift in Sources */,
-				EDBBB0BE294CFF8F0016B813 /* GroupEditViewReactor.swift in Sources */,
+				EDBBB0BE294CFF8F0016B813 /* MemoEditViewReactor.swift in Sources */,
 				EDBBB0BA294CD7690016B813 /* MemoDetailViewReactor.swift in Sources */,
 				ED6B79CE294867DA00CADC8E /* TaskCellReactor.swift in Sources */,
 				ED6B79BF2948661800CADC8E /* ServiceProvider.swift in Sources */,
@@ -699,6 +702,7 @@
 				ED6B79C32948666200CADC8E /* TabBarViewController.swift in Sources */,
 				ED6B79E329486BDD00CADC8E /* AlertActionType.swift in Sources */,
 				ED6B79DC29486A3F00CADC8E /* TaskEditPresentaionController.swift in Sources */,
+				EDBBB0C2294D05C00016B813 /* MemoService.swift in Sources */,
 				ED6B79D0294867DA00CADC8E /* TaskHeaderCellReactor.swift in Sources */,
 				EDBBB0B3294CD7690016B813 /* MemoViewCell.swift in Sources */,
 				ED6B79D1294867DA00CADC8E /* TodoViewReactor.swift in Sources */,

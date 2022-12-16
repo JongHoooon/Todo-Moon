@@ -73,6 +73,7 @@ final class MemoDetailViewController: BaseViewController, View {
 private extension MemoDetailViewController {
     
     func configureNavigateion() {
+        navigationItem.title = "Memo 🌕"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"),
                                                            style: .plain,
                                                            target: self,
@@ -148,27 +149,21 @@ private extension MemoDetailViewController {
                                        style: .default) { [weak self] _ in
             guard let self = self else { return }
             
-            //          guard let provider = self.reactor?.provider else { return }
-            //          guard let clubResponse = self.reactor?.currentState.clubResponse else { return }
+            guard let provider = self.reactor?.provider else { return }
+            guard let memo = self.reactor?.currentState.memo else { return }
+            let vc = MemoEditViewController(MemoEditViewReactor(provider: provider, memo: memo))
             
-            //          let vc = GroupEditViewController(
-            //            GroupEditViewReactor(provider,
-            //                                 clubResponse: clubResponse))
-            //          let nav = UINavigationController(rootViewController: vc)
-            //          nav.modalPresentationStyle = .fullScreen
-            //          self.present(nav, animated: true)
-            
-            print("수정수정수정수정수정수정수정수정수정수정수정수정수정수정수정수정수정수정수정")
+            let nav = UINavigationController(rootViewController: vc)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true)
         }
         
         let deleteAction = UIAlertAction(title: "삭제",
                                          style: .destructive) { _ in
             
-            
-            
             self.present(confirmAlertController, animated: true)
         }
-
+        
         [
             editAction,
             deleteAction,

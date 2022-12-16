@@ -152,7 +152,7 @@ final class CoreDataService: BaseService, CoreDataServiceType {
     // MARK: - Memo
     
     @discardableResult
-    func createMemo(title: String, contents: String) -> RxSwift.Observable<Memo> {
+    func createMemo(title: String, contents: String) -> Observable<Memo> {
         let memo = Memo(context: mainContext)
         memo.title = title
         memo.contents = contents
@@ -167,7 +167,7 @@ final class CoreDataService: BaseService, CoreDataServiceType {
     }
     
     @discardableResult
-    func fetchMemos() -> RxSwift.Observable<[Memo]> {
+    func fetchMemos() -> Observable<[Memo]> {
         let fetchRequest: NSFetchRequest<Memo> = Memo.fetchRequest()
         
         do {
@@ -180,7 +180,7 @@ final class CoreDataService: BaseService, CoreDataServiceType {
     }
     
     @discardableResult
-    func editMemo(memo: Memo, title: String, contents: String) -> RxSwift.Observable<Memo> {
+    func editMemo(memo: Memo, title: String, contents: String) -> Observable<Memo> {
         memo.title = title
         memo.contents = contents
         
@@ -195,7 +195,7 @@ final class CoreDataService: BaseService, CoreDataServiceType {
     }
     
     @discardableResult
-    func deleteMemo(memo: Memo) -> RxSwift.Observable<Memo> {
+    func deleteMemo(memo: Memo) -> Observable<Memo> {
         mainContext.delete(memo)
         
         do {

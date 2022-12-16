@@ -176,10 +176,8 @@ final class TodoViewReactor: Reactor {
         case .delete:
             guard let indexPath = self.indexPath(forTodoID: currentState.selectedID,
                                                  from: currentState) else { return .empty() }
-            
             let todo = currentState.todos.first { $0.objectID.hashValue == currentState.selectedID }
             guard let todo = todo else { return .empty() }
-            
             
             // TODO: 성공 전달되는 코드 맞는지???
             return self.provider.coreDataService.deleteTodo(todo: todo).map { _ in
@@ -280,9 +278,7 @@ final class TodoViewReactor: Reactor {
             let sectionModel = TaskHeaderCellReactor(self.provider)
             let section = TaskListSection(model: sectionModel, items: sectionItems)
             state.sections = [section]
-            
-            print(state.sections.first?.items.map { $0.currentState.todo.contents })
-            
+                        
         case let .selectedId(ID):
             state.selectedID = ID
             
@@ -292,8 +288,7 @@ final class TodoViewReactor: Reactor {
             
         case let .updateSectionItem(indexPath, sectionItem):
             state.sections[indexPath] = sectionItem
-            print(sectionItem.currentState.todo.isChecked)
-            
+                        
             if let index = state.todos.firstIndex(where: { $0.objectID.hashValue == state.selectedID }) {
                 state.todos[index].contents = todoRelay.value
             }
@@ -308,19 +303,20 @@ final class TodoViewReactor: Reactor {
         case .tapToggle:
             state.isWeekScope.toggle()
         case let .doTomorrow(indexPath, task):
-            
-            // 추가
-            state.todos.insert(task, at: state.todos.count)
-            
             // 삭제
             state.todos = state.todos.filter { $0.objectID.hashValue != state.selectedID }
             state.sections.remove(at: indexPath)
             
-        case let .doToday(indexPath, task):
+            // 추가
             state.todos.insert(task, at: state.todos.count)
-            
+
+        case let .doToday(indexPath, task):
+            // 삭제
             state.todos = state.todos.filter { $0.objectID.hashValue != state.selectedID }
             state.sections.remove(at: indexPath)
+            
+            // 추가
+            state.todos.insert(task, at: state.todos.count)
         }
         
         return state

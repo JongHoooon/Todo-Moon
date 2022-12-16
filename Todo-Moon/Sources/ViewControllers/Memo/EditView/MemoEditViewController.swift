@@ -1,17 +1,15 @@
 //
-//  MemoWriteViewController.swift
+//  MemoEditViewController.swift
 //  HongikTimer
 //
-//  Created by JongHoon on 2022/11/09.
+//  Created by JongHoon on 2022/11/23.
 //
 
 import UIKit
 import ReactorKit
 import RxGesture
 
-final class MemoWriteViewController: BaseViewController, View {
-    
-    typealias Reactor = MemoWriteViewReactor
+final class MemoEditViewController: BaseViewController, View {
     
     // MARK: - UI
     
@@ -25,12 +23,12 @@ final class MemoWriteViewController: BaseViewController, View {
     
     private lazy var titleTextField = UITextField().then {
         $0.placeholder = "제목"
+        $0.becomeFirstResponder()
     }
     
     private lazy var contentTextView = UITextView().then {
         $0.font = .systemFont(ofSize: 17.0)
-        $0.text = "내용을 입력해주세요"
-        $0.textColor = .placeholderText
+        $0.textColor = .label
     }
     
     private lazy var separatorView = UIView().then {
@@ -45,10 +43,13 @@ final class MemoWriteViewController: BaseViewController, View {
     }
     
     // MARK: - Initialize
-    init(_ reactor: MemoWriteViewReactor) {
+    init(_ reactor: MemoEditViewReactor) {
         super.init()
         
         self.reactor = reactor
+        self.titleTextField.text = reactor.initialState.title
+        self.contentTextView.text = reactor.initialState.content
+        
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -57,7 +58,7 @@ final class MemoWriteViewController: BaseViewController, View {
     
     // MARK: - Binding
     
-    func bind(reactor: MemoWriteViewReactor) {
+    func bind(reactor: MemoEditViewReactor) {
         
         // action
         
@@ -75,32 +76,8 @@ final class MemoWriteViewController: BaseViewController, View {
         let contentText = contentTextView.rx.text.orEmpty
         
         Observable.combineLatest(titleText, contentText)
-            .skip(1)
             .map { Reactor.Action.updateText(title: $0, content: $1)}
             .bind(to: reactor.action)
-            .disposed(by: self.disposeBag)
-        
-        // TODO: textField처럼 placeHolder 구현해보기
-        contentTextView.rx.didBeginEditing
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else { return }
-                
-                if self.contentTextView.textColor == .placeholderText {
-                    self.contentTextView.text = nil
-                    self.contentTextView.textColor = .label
-                }
-            })
-            .disposed(by: self.disposeBag)
-        
-        contentTextView.rx.didEndEditing
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else { return }
-                
-                if self.contentTextView.text == nil || self.contentTextView.text == "" {
-                    self.contentTextView.text = "내용을 입력해주세요"
-                    self.contentTextView.textColor = .placeholderText
-                }
-            })
             .disposed(by: self.disposeBag)
         
         // state
@@ -110,7 +87,7 @@ final class MemoWriteViewController: BaseViewController, View {
                 self?.dismiss(animated: true)
             })
             .disposed(by: self.disposeBag)
-        
+
         reactor.state.asObservable().map { $0.canSubmit }
             .distinctUntilChanged()
             .bind(to: submitBarButton.rx.isEnabled)
@@ -121,12 +98,12 @@ final class MemoWriteViewController: BaseViewController, View {
 
 // MARK: - Method
 
-extension MemoWriteViewController {
+extension MemoEditViewController {
     
     private func configureLayout() {
         self.view.backgroundColor = .systemBackground
         
-        self.navigationItem.title = "메모 쓰기"
+        self.navigationItem.title = "메모 수정"
         self.navigationItem.leftBarButtonItem = closeBarButton
         self.navigationItem.rightBarButtonItem = submitBarButton
         
@@ -146,7 +123,7 @@ extension MemoWriteViewController {
             $0.leading.trailing.equalToSuperview().inset(16.0)
             $0.height.equalTo(0.5)
         }
-        
+
         contentTextView.snp.makeConstraints {
             $0.top.equalTo(separatorView.snp.bottom).offset(16.0)
             $0.leading.trailing.equalToSuperview().inset(16.0)
