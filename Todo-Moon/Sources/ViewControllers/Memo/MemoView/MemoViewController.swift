@@ -41,9 +41,12 @@ class MemoViewController: BaseViewController, View {
     
     private lazy var refreshControl = UIRefreshControl().then {
         $0.attributedTitle = NSAttributedString(
-            string: "🐥당겨서 새로 고침!🐣",
+            string: "🌘  🌗 🌕  🌓  🌒",
             attributes: [.foregroundColor: UIColor.label]
         )
+        $0.tintColor = .defaultTintColor
+        $0.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        
     }
     
     private lazy var boardCollectionView = UICollectionView(
@@ -68,9 +71,9 @@ class MemoViewController: BaseViewController, View {
     }
     
     private lazy var writeButton = UIButton().then {
-        let plusImage = UIImage(systemName: "plus")?.withTintColor(.systemBackground, renderingMode: .alwaysOriginal)
+        let plusImage = UIImage(systemName: "plus")?.withTintColor(.white, renderingMode: .alwaysOriginal)
         $0.setImage(plusImage, for: .normal)
-        //    $0.backgroundColor = .defaultTintColor
+        $0.backgroundColor = .defaultTintColor
         $0.layer.cornerRadius = 28.0
         
         $0.layer.shadowColor = UIColor.black.cgColor
@@ -110,21 +113,15 @@ class MemoViewController: BaseViewController, View {
             .bind(to: reactor.action )
             .disposed(by: self.disposeBag)
         
-        boardCollectionView.refreshControl?.rx.controlEvent(.valueChanged)
-            .map { _ in Reactor.Action.refresh }
-            .bind(to: reactor.action)
-            .disposed(by: self.disposeBag)
-        
         self.writeButton.rx.tap
             .map(reactor.reactorForWriteView)
             .subscribe(onNext: { [weak self] writeViewReactor in
                 guard let self = self else { return }
                 
-                let viewController = WriteViewController(writeViewReactor)
+                let viewController = MemoWriteViewController(writeViewReactor)
                 let navigationViewController = UINavigationController(rootViewController: viewController)
                 navigationViewController.modalPresentationStyle = .fullScreen
                 self.present(navigationViewController, animated: true)
-                
             })
             .disposed(by: self.disposeBag)
         
@@ -146,12 +143,6 @@ class MemoViewController: BaseViewController, View {
             .bind(to: self.boardCollectionView.rx.items(dataSource: self.dataSource))
             .disposed(by: disposeBag)
         
-        reactor.pulse(\.$endRefreshing)
-            .subscribe(onNext: { [weak self] _ in
-                self?.refreshControl.endRefreshing()
-            })
-            .disposed(by: self.disposeBag)
-        
         // delegate
         self.boardCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
@@ -165,7 +156,7 @@ private extension MemoViewController {
     func configureTabBar() {
         
         let titleLabel = UILabel().then {
-            $0.text = "Chick🔥👨‍💻"
+            $0.text = "Memo 🌕"
             $0.font = .systemFont(ofSize: 16.0, weight: .bold)
         }
         let leftItem = UIBarButtonItem(customView: titleLabel)
@@ -194,27 +185,21 @@ private extension MemoViewController {
 }
 
 extension MemoViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath
-    ) -> CGSize {
-        return CGSize(width: view.frame.width - 16.0, height: 160.0)
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width - 16.0, height: 120.0)
     }
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        referenceSizeForHeaderInSection section: Int
-    ) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.width, height: 32.0)
     }
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        insetForSectionAt section: Int
-    ) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(
             top: 4.0, left: 8.0,
             bottom: 4.0, right: 8.0

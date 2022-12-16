@@ -26,7 +26,7 @@ final class MemoViewCell: UICollectionViewCell, View {
     private lazy var contentLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 14.0, weight: .regular)
         $0.textColor = .label
-        $0.numberOfLines = 2
+        $0.numberOfLines = 3
     }
     
     private lazy var separatorView = UIView().then {

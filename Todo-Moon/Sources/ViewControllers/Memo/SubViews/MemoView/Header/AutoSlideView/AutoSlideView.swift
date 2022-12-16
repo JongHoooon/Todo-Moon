@@ -36,7 +36,7 @@ final class AutoSlideView: UIView {
         layout.minimumLineSpacing = 0
         
         $0.collectionViewLayout = layout
-            
+        
         $0.showsHorizontalScrollIndicator = false
         $0.isPagingEnabled = true
         
@@ -49,7 +49,7 @@ final class AutoSlideView: UIView {
         )
     }
     
-// MARK: - Lifecycle
+    // MARK: - Lifecycle
     
     override init(frame: CGRect) {
         
@@ -67,17 +67,13 @@ final class AutoSlideView: UIView {
 // MARK: - CollectionView
 
 extension AutoSlideView: UICollectionViewDataSource {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int
-    ) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         autoSlideTexts.count
     }
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: AutoSlideCollectionViewCell.identifier,
             for: indexPath
@@ -89,11 +85,9 @@ extension AutoSlideView: UICollectionViewDataSource {
 }
 
 extension AutoSlideView: UICollectionViewDelegateFlowLayout {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath
-    ) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: frame.width, height: frame.height)
     }
     
@@ -106,11 +100,12 @@ extension AutoSlideView: UICollectionViewDelegateFlowLayout {
 
 private extension AutoSlideView {
     func configureLayout() {
-        backgroundColor = UIColor.init(rgb: 0xDBF0FF)
+        //        backgroundColor = UIColor.init(rgb: 0xDBF0FF)
+        backgroundColor = .defaultTintColor
         [
             autoSlideCollectionView
         ].forEach { addSubview($0) }
-    
+        
         autoSlideCollectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
@@ -118,7 +113,7 @@ private extension AutoSlideView {
     
     /// 3초다마 슬라이드  이동
     func autoSlideTimer() {
-        let _ = Timer.scheduledTimer(
+        Timer.scheduledTimer(
             timeInterval: 3.0,
             target: self,
             selector: #selector(autoSlideMove),
@@ -127,7 +122,7 @@ private extension AutoSlideView {
         )
     }
     
-// MARK: - Selector
+    // MARK: - Selector
     
     /// autoSlide Cell를 움직인다.
     @objc func autoSlideMove() {
@@ -138,7 +133,8 @@ private extension AutoSlideView {
                 at: .left,
                 animated: true
             )
-            #warning("TODO")// TODO: animation 자연스럽게
+            
+#warning("TODO")// TODO: animation 자연스럽게
             nowPage = 0
             
             return
@@ -151,6 +147,5 @@ private extension AutoSlideView {
                 animated: true
             )
         }
-        
     }
 }

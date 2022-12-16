@@ -1,5 +1,5 @@
 //
-//  WriteViewReactor.swift
+//  MemoWriteViewReactor.swift
 //  HongikTimer
 //
 //  Created by JongHoon on 2022/11/09.
@@ -9,7 +9,7 @@ import ReactorKit
 import RxCocoa
 import RxSwift
 
-final class WriteViewReactor: Reactor {
+final class MemoWriteViewReactor: Reactor {
     
     enum Action {
         case close
@@ -19,7 +19,6 @@ final class WriteViewReactor: Reactor {
     
     enum Mutation {
         case dismiss
-        
         case validateCanSubmit
         case updateText(title: String, content: String)
     }
@@ -29,7 +28,6 @@ final class WriteViewReactor: Reactor {
         var canSubmit: Bool = false
         
         var title: String = ""
-        var selectNumber: Int = 0
         var content: String = ""
     }
     
@@ -71,7 +69,7 @@ final class WriteViewReactor: Reactor {
             
             // TODO: contentTextView place holder랑 충돌
         case .validateCanSubmit:
-            if state.title.count != 0 && state.selectNumber != 0 && state.content != nil {
+            if state.title.count != 0 && state.content != nil {
                 state.canSubmit = true
             } else {
                 state.canSubmit = false

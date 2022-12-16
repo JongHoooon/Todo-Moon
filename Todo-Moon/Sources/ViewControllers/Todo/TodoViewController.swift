@@ -189,11 +189,6 @@ class TodoViewController: BaseViewController, View {
         // state
         
         reactor.state.asObservable().map {
-        
-            
-            print("---------------뷰컨----------------------")
-            print($0.sections.first?.items.map { $0.currentState.todo.isChecked })
-            
             return $0.sections }
             .bind(to: self.taskCollectionView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)

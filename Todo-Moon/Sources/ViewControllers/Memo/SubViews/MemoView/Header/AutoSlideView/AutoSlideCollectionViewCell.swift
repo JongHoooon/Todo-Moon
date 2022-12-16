@@ -16,7 +16,7 @@ final class AutoSlideCollectionViewCell: UICollectionViewCell {
             ofSize: 12.0,
             weight: .regular
         )
-        $0.textColor = .black
+        $0.textColor = .white
         $0.numberOfLines = 1
     }
 
@@ -36,7 +36,7 @@ final class AutoSlideCollectionViewCell: UICollectionViewCell {
 
 extension AutoSlideCollectionViewCell {
     func configureCell(_ content: String) {
-        contentLabel.text = content + " Hype Chick🔥👨‍💻"
+        contentLabel.text = content + " Todo Moon 🌝"
     }
 }
 
@@ -45,7 +45,8 @@ extension AutoSlideCollectionViewCell {
 private extension AutoSlideCollectionViewCell {
     func configureLayout() {
         
-        backgroundColor = UIColor.init(rgb: 0xDBF0FF)
+//        backgroundColor = UIColor.init(rgb: 0xDBF0FF)
+        backgroundColor = .defaultTintColor
         
         addSubview(contentLabel)
         

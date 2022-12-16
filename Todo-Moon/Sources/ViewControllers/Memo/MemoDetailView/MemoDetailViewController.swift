@@ -12,7 +12,7 @@ import ReactorKit
 
 final class MemoDetailViewController: BaseViewController, View {
     
-    // MARK: - Property
+    // MARK: - UI
     
     private lazy var  titleLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 24.0, weight: .bold)
@@ -73,12 +73,15 @@ final class MemoDetailViewController: BaseViewController, View {
 private extension MemoDetailViewController {
     
     func configureNavigateion() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "chevron.left"),
-            style: .plain,
-            target: self,
-            action: #selector(tapLeftbarButton)
-        )
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"),
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(tapLeftbarButton))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(tapMenuButton))
     }
     
     func configureLayout() {
@@ -114,15 +117,63 @@ private extension MemoDetailViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc func tapEnterButton() {
-        print("입장하기")
+    @objc func tapMenuButton() {
         
-        let alertController = UIAlertController(title: "", message: "가입이 완료됐습니다.", preferredStyle: .alert)
-        let action = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
-            self?.navigationController?.popViewController(animated: true)
+        let confirmAlertController = UIAlertController(title: "그룹 삭제",
+                                                       message: "정말로 그룹을 삭제하시겠습니까?",
+                                                       preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "취소",
+                                         style: .cancel)
+        
+        let confirmAction = UIAlertAction(title: "확인",
+                                          style: .destructive) { [weak self] _ in
+            guard let self = self else { return }
+            
+            guard let memo = self.reactor?.currentState.memo else { return }
+            self.reactor?.provider.coreDataService.deleteMemo(memo: memo)
+            self.navigationController?.popViewController(animated: true)
         }
         
-        alertController.addAction(action)
-        present(alertController, animated: true)
+        [
+            confirmAction,
+            cancelAction
+        ].forEach { confirmAlertController.addAction($0) }
+        
+        let menuAlertController = UIAlertController(title: "그룹 수정 / 삭제",
+                                                    message: nil,
+                                                    preferredStyle: .actionSheet)
+        
+        let editAction = UIAlertAction(title: "수정",
+                                       style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            
+            //          guard let provider = self.reactor?.provider else { return }
+            //          guard let clubResponse = self.reactor?.currentState.clubResponse else { return }
+            
+            //          let vc = GroupEditViewController(
+            //            GroupEditViewReactor(provider,
+            //                                 clubResponse: clubResponse))
+            //          let nav = UINavigationController(rootViewController: vc)
+            //          nav.modalPresentationStyle = .fullScreen
+            //          self.present(nav, animated: true)
+            
+            print("수정수정수정수정수정수정수정수정수정수정수정수정수정수정수정수정수정수정수정")
+        }
+        
+        let deleteAction = UIAlertAction(title: "삭제",
+                                         style: .destructive) { _ in
+            
+            
+            
+            self.present(confirmAlertController, animated: true)
+        }
+
+        [
+            editAction,
+            deleteAction,
+            cancelAction
+        ].forEach { menuAlertController.addAction($0) }
+        self.present(menuAlertController, animated: true)
     }
 }

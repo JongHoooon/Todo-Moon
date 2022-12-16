@@ -54,14 +54,13 @@ extension TabBarViewController {
     private func setTabBar() {
         self.tabBar.backgroundColor = .systemGray6
 
-        let todoViewController = TodoViewController(TodoViewReactor(self.provider)).then {
+        let todoViewController = UINavigationController(rootViewController: TodoViewController(TodoViewReactor(self.provider)).then {
             $0.tabBarItem = todoTabBarItem
-        }
+        })
         
-        let memoViewController = UIViewController() .then {
+        let memoViewController = UINavigationController(rootViewController: MemoViewController(MemoViewReactor(provider: self.provider)).then {
             $0.tabBarItem = memoTabBarItem
-        }
-        
+        })
         self.viewControllers = [todoViewController, memoViewController]
     }
 }

@@ -26,7 +26,6 @@ final class MemoViewReactor: Reactor {
     
     struct State {
         var sections: [MemoListSection]
-        @Pulse var endRefreshing: Bool?
     }
     
     // MARK: - Property
@@ -81,8 +80,8 @@ final class MemoViewReactor: Reactor {
 
 extension MemoViewReactor {
     
-    func reactorForWriteView() -> WriteViewReactor {
-        return WriteViewReactor(self.provider)
+    func reactorForWriteView() -> MemoWriteViewReactor {
+        return MemoWriteViewReactor(self.provider)
     }
     
     func reactorForEnterView() -> MemoDetailViewReactor {
