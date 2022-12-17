@@ -37,10 +37,11 @@ final class TaskEditViewController: BaseViewController, View {
             ofSize: 16.0
         )
         $0.textColor = .label
+        $0.textAlignment = .center
     }
     
     private lazy var editButton = UIButton().then {
-        $0.backgroundColor = .systemGray4
+        $0.backgroundColor = .systemGray6
         $0.setTitle("수정", for: .normal)
         $0.setTitleColor(.label, for: .normal)
         $0.setImage(Icon.pencilIcon, for: .normal)
@@ -48,7 +49,7 @@ final class TaskEditViewController: BaseViewController, View {
         $0.layer.cornerRadius = 8.0
     }
     private lazy var deleteButton = UIButton().then {
-        $0.backgroundColor = .systemGray4
+        $0.backgroundColor = .systemGray6
         $0.setTitle("삭제", for: .normal)
         $0.setTitleColor(.label, for: .normal)
         $0.setImage(Icon.trashIcon, for: .normal)
@@ -184,10 +185,6 @@ private extension TaskEditViewController {
             $0.axis = .horizontal
             $0.distribution = .fillEqually
             $0.spacing = 8.0
-            
-//            editButton.snp.makeConstraints {
-//                $0.height.equalTo(<#T##other: ConstraintRelatableTarget##ConstraintRelatableTarget#>)
-//            }
         }
         
         [
@@ -207,7 +204,7 @@ private extension TaskEditViewController {
         
         todoLabel.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(16.0)
-            $0.top.equalToSuperview().inset(64.0)
+            $0.top.equalTo(sliderIndicator.snp.bottom).offset(16.0)
         }
         
         buttonStackView.snp.makeConstraints {
