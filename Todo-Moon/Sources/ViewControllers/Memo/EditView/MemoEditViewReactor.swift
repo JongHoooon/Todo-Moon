@@ -20,13 +20,11 @@ final class MemoEditViewReactor: Reactor {
     enum Mutation {
         case dismiss
         
-        case validateCanSubmit
         case updateText(title: String, content: String)
     }
     
     struct State {
         var isDismissed: Bool = false
-        var canSubmit: Bool = true
         
         var title: String
         var content: String
@@ -50,14 +48,9 @@ final class MemoEditViewReactor: Reactor {
             newMutation = .just(.dismiss)
             
         case let .updateText(title, content):
-            newMutation = Observable.concat([
-                Observable.just(.updateText(title: title, content: content)),
-                Observable.just(.validateCanSubmit)
-            ])
+            newMutation = Observable.just(.updateText(title: title, content: content))
             
         case .submit:
-            guard self.currentState.canSubmit else { return .empty() }
-            
             return self.provider.coreDataService.editMemo(memo: currentState.memo,
                                                           title: currentState.title,
                                                           contents: currentState.content)
@@ -78,13 +71,6 @@ final class MemoEditViewReactor: Reactor {
         case .dismiss:
             state.isDismissed = true
             
-        case .validateCanSubmit:
-            if state.title.count != 0 && state.content.count != 0 {
-                state.canSubmit = true
-            } else {
-                state.canSubmit = false
-            }
-            
         case .updateText(title: let title, content: let content):
             state.title = title
             state.content = content
@@ -93,3 +79,4 @@ final class MemoEditViewReactor: Reactor {
         return state
     }
 }
+  

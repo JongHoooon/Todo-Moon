@@ -87,12 +87,19 @@ final class MemoEditViewController: BaseViewController, View {
                 self?.dismiss(animated: true)
             })
             .disposed(by: self.disposeBag)
-
-        reactor.state.asObservable().map { $0.canSubmit }
-            .distinctUntilChanged()
-            .bind(to: submitBarButton.rx.isEnabled)
-            .disposed(by: self.disposeBag)
         
+        Observable.combineLatest(reactor.state.asObservable().map { $0.title },
+                                 reactor.state.asObservable().map { $0.content })
+            .subscribe { [weak self] title, _ in
+                guard let self = self else { return }
+                
+                if title.isEmpty || self.contentTextView.textColor == .placeholderText {
+                    self.submitBarButton.isEnabled = false
+                } else {
+                    self.submitBarButton.isEnabled = true
+                }
+            }
+            .disposed(by: self.disposeBag)
     }
 }
 

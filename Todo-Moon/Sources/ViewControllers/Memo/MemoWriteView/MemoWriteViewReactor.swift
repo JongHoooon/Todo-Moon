@@ -19,13 +19,11 @@ final class MemoWriteViewReactor: Reactor {
     
     enum Mutation {
         case dismiss
-        case validateCanSubmit
         case updateText(title: String, content: String)
     }
     
     struct State {
         var isDismissed: Bool = false
-        var canSubmit: Bool = false
         
         var title: String = ""
         var content: String = ""
@@ -45,14 +43,11 @@ final class MemoWriteViewReactor: Reactor {
             return .just(.dismiss)
             
         case let .updateText(title, content):
-            return Observable.concat([
-                Observable.just(.updateText(title: title, content: content)),
-                Observable.just(.validateCanSubmit)
-            ])
-            
+            return Observable.just(.updateText(title: title,
+                                               content: content))
+        
         case .submit:
             
-            guard self.currentState.canSubmit else { return .empty() }
             return self.provider.coreDataService.createMemo(title: currentState.title,
                                                             contents: currentState.content)
             .map { _ in
@@ -66,15 +61,7 @@ final class MemoWriteViewReactor: Reactor {
         switch mutation {
         case .dismiss:
             state.isDismissed = true
-            
-            // TODO: contentTextView place holder랑 충돌
-        case .validateCanSubmit:
-            if state.title.count != 0 && state.content != nil {
-                state.canSubmit = true
-            } else {
-                state.canSubmit = false
-            }
-            
+                        
         case .updateText(title: let title, content: let content):
             state.title = title
             state.content = content
