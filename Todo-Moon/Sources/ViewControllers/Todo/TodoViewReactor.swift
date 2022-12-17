@@ -140,6 +140,7 @@ final class TodoViewReactor: Reactor {
                         self.todoRelay.accept($0)
                     }
                     .disposed(by: self.disposebag)
+                    
                 }
                 Navigator().present(alert)
                 return Disposables.create {
@@ -155,6 +156,9 @@ final class TodoViewReactor: Reactor {
                         return .empty()
                         
                     case .submit:
+                        
+                        guard self.todoRelay.value.isEmpty != true else { return .empty() }
+                        
                         let count = self.currentState.sections[0].items.count
                         let indexPath = IndexPath(item: count, section: 0)
                         

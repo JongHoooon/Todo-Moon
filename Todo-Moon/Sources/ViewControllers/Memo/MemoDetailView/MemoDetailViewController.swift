@@ -120,8 +120,8 @@ private extension MemoDetailViewController {
     
     @objc func tapMenuButton() {
         
-        let confirmAlertController = UIAlertController(title: "그룹 삭제",
-                                                       message: "정말로 그룹을 삭제하시겠습니까?",
+        let confirmAlertController = UIAlertController(title: "메모 삭제",
+                                                       message: "정말로 메모를 삭제하시겠습니까?",
                                                        preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "취소",
