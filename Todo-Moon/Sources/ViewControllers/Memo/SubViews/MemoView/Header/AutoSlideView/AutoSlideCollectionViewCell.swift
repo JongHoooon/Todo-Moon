@@ -19,8 +19,8 @@ final class AutoSlideCollectionViewCell: UICollectionViewCell {
         $0.textColor = .white
         $0.numberOfLines = 1
     }
-
-// MARK: - Lifecycle
+    
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -45,7 +45,7 @@ extension AutoSlideCollectionViewCell {
 private extension AutoSlideCollectionViewCell {
     func configureLayout() {
         
-//        backgroundColor = UIColor.init(rgb: 0xDBF0FF)
+        //        backgroundColor = UIColor.init(rgb: 0xDBF0FF)
         backgroundColor = .defaultTintColor
         
         addSubview(contentLabel)

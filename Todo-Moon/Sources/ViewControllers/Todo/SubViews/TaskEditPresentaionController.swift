@@ -50,18 +50,18 @@ final class TaskEditPresentaionController: UIPresentationController {
         presentedViewController
             .transitionCoordinator?
             .animate(alongsideTransition: { [weak self] _ in
-            self?.blurEffectView.alpha = 0.5
-        }, completion: { _ in })
+                self?.blurEffectView.alpha = 0.5
+            }, completion: { _ in })
     }
     
     override func dismissalTransitionWillBegin() {
         presentedViewController
             .transitionCoordinator?
             .animate(alongsideTransition: { [weak self] _ in
-            self?.blurEffectView.alpha = 0
-        }, completion: {[ weak self] _ in
-            self?.blurEffectView.removeFromSuperview()
-        })
+                self?.blurEffectView.alpha = 0
+            }, completion: {[ weak self] _ in
+                self?.blurEffectView.removeFromSuperview()
+            })
     }
     
     override func containerViewWillLayoutSubviews() {

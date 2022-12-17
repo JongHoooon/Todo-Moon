@@ -55,7 +55,7 @@ final class CoreDataService: BaseService, CoreDataServiceType {
     lazy var persistentContainer = NSPersistentContainer(name: "Todo_Moon").then {
         $0.loadPersistentStores { description, error in
             if let error = error {
-                fatalError("DEBUG failed to initialize Core Data \(error)")
+                fatalError("💬 failed to initialize Core Data \(error)")
             }
             
             _ = description
@@ -71,12 +71,13 @@ final class CoreDataService: BaseService, CoreDataServiceType {
         let todo = Todo(context: mainContext)
         todo.contents = content
         todo.date = date
+        todo.id = UUID().uuidString
         
         do {
             try mainContext.save()
             return Observable.just(todo)
         } catch {
-            print("DEBUG Failed to save a todo \(error)")
+            print("💬 Failed to save a todo \(error)")
             return Observable.error(error)
         }
     }
@@ -89,7 +90,7 @@ final class CoreDataService: BaseService, CoreDataServiceType {
             let todos = try mainContext.fetch(fetchRequest)
             return Observable.just(todos)
         } catch {
-            print("DEBUG todos fetch 실패")
+            print("💬 todos fetch 실패")
             return Observable.just([])
         }
     }
@@ -103,7 +104,7 @@ final class CoreDataService: BaseService, CoreDataServiceType {
             return Observable.just(todo)
         } catch {
             mainContext.rollback()
-            print("DEBUG todo contnents 변경 실패! \n \(error)")
+            print("💬 todo contnents 변경 실패! \n \(error)")
             return Observable.error(error)
         }
     }
@@ -117,7 +118,7 @@ final class CoreDataService: BaseService, CoreDataServiceType {
             return Observable.just(todo)
         } catch {
             mainContext.rollback()
-            print("DEBUG todo 삭제 실패! \n \(error)")
+            print("💬 todo 삭제 실패! \n \(error)")
             return Observable.error(error)
         }
     }
@@ -127,10 +128,11 @@ final class CoreDataService: BaseService, CoreDataServiceType {
         
         do {
             try mainContext.save()
+            print(todo.isChecked)
             return Observable.just(todo)
         } catch {
             mainContext.rollback()
-            print("DEBUG todo 체크 실패! \n \(error)")
+            print("💬 todo 체크 실패! \n \(error)")
             return Observable.error(error)
         }
     }
@@ -144,7 +146,7 @@ final class CoreDataService: BaseService, CoreDataServiceType {
             return Observable.just(todo)
         } catch {
             mainContext.rollback()
-            print("DEBUG todo 날짜 변경 실패 \n \(error)")
+            print("💬 todo 날짜 변경 실패 \n \(error)")
             return Observable.error(error)
         }
     }
@@ -161,7 +163,7 @@ final class CoreDataService: BaseService, CoreDataServiceType {
             try mainContext.save()
             return Observable.just(memo)
         } catch {
-            print("DEBUG memo 저장 실패")
+            print("💬 memo 저장 실패")
             return Observable.error(error)
         }
     }

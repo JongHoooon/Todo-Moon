@@ -45,7 +45,7 @@ final class MemoWriteViewReactor: Reactor {
         case let .updateText(title, content):
             return Observable.just(.updateText(title: title,
                                                content: content))
-        
+            
         case .submit:
             
             return self.provider.coreDataService.createMemo(title: currentState.title,
@@ -61,7 +61,7 @@ final class MemoWriteViewReactor: Reactor {
         switch mutation {
         case .dismiss:
             state.isDismissed = true
-                        
+            
         case .updateText(title: let title, content: let content):
             state.title = title
             state.content = content

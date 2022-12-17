@@ -10,7 +10,6 @@ import RxCocoa
 import RxSwift
 import CoreData
 
-
 final class TaskCellReactor: Reactor {
     
     enum Action {
@@ -28,12 +27,12 @@ final class TaskCellReactor: Reactor {
     
     let provider: ServiceProviderType
     let initialState: State
-    let checkedCellIdRelay: BehaviorRelay<Int>
+    let checkedCellIdRelay: BehaviorRelay<String>
     
     init(_ provider: ServiceProviderType,
          todo: Todo,
          isEnabled: Bool = false,
-         checkRelay: BehaviorRelay<Int>) {
+         checkRelay: BehaviorRelay<String>) {
         self.provider = provider
         self.initialState = State(todo: todo, isEnabled: isEnabled)
         self.checkedCellIdRelay = checkRelay
@@ -43,16 +42,17 @@ final class TaskCellReactor: Reactor {
         switch action {
         case .tapBox:
             // todoViewReactor 에게 업데이트하도록 선택된 id를 전달한다.
-            checkedCellIdRelay.accept(currentState.todo.objectID.hashValue)
+            checkedCellIdRelay.accept(currentState.todo.id ?? "")
             return self.provider.todoService.tapCheckButton()
                 .map { _ in .tapBox }
         }
     }
     
     func reduce(state: State, mutation: Mutation) -> State {
-        var state = state
+        let state = state
         switch mutation {
         case .tapBox:
+//            state.todo.isChecked.toggle()
             return state
         }
         

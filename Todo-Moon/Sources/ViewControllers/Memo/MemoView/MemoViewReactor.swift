@@ -47,7 +47,7 @@ final class MemoViewReactor: Reactor {
             return self.provider.coreDataService.fetchMemos()
                 .map({ memos in
                     let sectionItems = memos.map { MemoViewCellReactor.init(memo: $0,
-                                                                             provider: self.provider) }
+                                                                            provider: self.provider) }
                     let section = MemoListSection(model: Void(), items: sectionItems)
                     return .setSetcions([section])
                 })
@@ -57,7 +57,7 @@ final class MemoViewReactor: Reactor {
             return self.provider.coreDataService.fetchMemos()
                 .map({ memos in
                     let sectionItems = memos.map { MemoViewCellReactor.init(memo: $0,
-                                                                             provider: self.provider) }
+                                                                            provider: self.provider) }
                     let section = MemoListSection(model: Void(), items: sectionItems)
                     return .setSetcions([section])
                 })

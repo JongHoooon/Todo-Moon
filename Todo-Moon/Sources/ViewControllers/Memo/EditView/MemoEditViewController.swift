@@ -90,16 +90,16 @@ final class MemoEditViewController: BaseViewController, View {
         
         Observable.combineLatest(reactor.state.asObservable().map { $0.title },
                                  reactor.state.asObservable().map { $0.content })
-            .subscribe { [weak self] title, _ in
-                guard let self = self else { return }
-                
-                if title.isEmpty || self.contentTextView.textColor == .placeholderText {
-                    self.submitBarButton.isEnabled = false
-                } else {
-                    self.submitBarButton.isEnabled = true
-                }
+        .subscribe { [weak self] title, _ in
+            guard let self = self else { return }
+            
+            if title.isEmpty || self.contentTextView.textColor == .placeholderText {
+                self.submitBarButton.isEnabled = false
+            } else {
+                self.submitBarButton.isEnabled = true
             }
-            .disposed(by: self.disposeBag)
+        }
+        .disposed(by: self.disposeBag)
     }
 }
 
@@ -130,7 +130,7 @@ extension MemoEditViewController {
             $0.leading.trailing.equalToSuperview().inset(16.0)
             $0.height.equalTo(0.5)
         }
-
+        
         contentTextView.snp.makeConstraints {
             $0.top.equalTo(separatorView.snp.bottom).offset(16.0)
             $0.leading.trailing.equalToSuperview().inset(16.0)

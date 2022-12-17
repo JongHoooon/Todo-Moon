@@ -8,7 +8,7 @@
 import SnapKit
 import Then
 import UIKit
-    
+
 final class CategoryCollectionViewCell: UICollectionViewCell {
     
     private lazy var titleImageView = UIImageView().then {
@@ -24,7 +24,7 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - Lifecycle
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

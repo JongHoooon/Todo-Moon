@@ -200,10 +200,8 @@ extension MemoViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(
-            top: 4.0, left: 8.0,
-            bottom: 4.0, right: 8.0
-        )
+        return UIEdgeInsets(top: 4.0, left: 8.0,
+                            bottom: 4.0, right: 8.0)
     }
 }
 

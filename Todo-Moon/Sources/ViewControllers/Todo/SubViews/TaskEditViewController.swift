@@ -28,14 +28,12 @@ final class TaskEditViewController: BaseViewController, View {
     // MARK: - UI
     
     private lazy var sliderIndicator = UIView().then {
-        $0.backgroundColor = .systemGray
+        $0.backgroundColor = .systemGray3
         $0.layer.cornerRadius = 2
     }
     
     private lazy var todoLabel = UILabel().then {
-        $0.font = .systemFont(
-            ofSize: 16.0
-        )
+        $0.font = .systemFont(ofSize: 16.0)
         $0.textColor = .label
         $0.textAlignment = .center
     }
@@ -62,7 +60,7 @@ final class TaskEditViewController: BaseViewController, View {
         $0.backgroundColor = .clear
         $0.setTitleColor(.label, for: .normal)
         $0.setImage(Icon.rightArrow, for: .normal)
-//        $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
+        //        $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
         $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
     }
     

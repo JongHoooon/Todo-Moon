@@ -36,7 +36,7 @@ class TodoViewController: BaseViewController, View {
     // MARK: - Property
     
     let selectedDay = PublishRelay<Date>()
-    let selectedID = PublishRelay<Int>()
+    let selectedID = PublishRelay<String>()
     
     let dataSource = RxCollectionViewSectionedReloadDataSource<TaskListSection>(configureCell: {
         _, collectionView,
@@ -175,9 +175,9 @@ class TodoViewController: BaseViewController, View {
                 guard let self = self else { return }
                 
                 guard let editReactor = self.reactor?.reactorForTaskEdit(indexPath: indexPath) else { return }
-                let id = editReactor.currentState.todo.objectID.hashValue
+                let id = editReactor.currentState.todo.id
                 editReactor.todoRelay = reactor.todoRelay
-                self.selectedID.accept(id)
+                self.selectedID.accept(id ?? "")
                 
                 let editVC = TaskEditViewController(editReactor)
                 editVC.modalPresentationStyle = .custom
@@ -189,6 +189,10 @@ class TodoViewController: BaseViewController, View {
         // state
         
         reactor.state.asObservable().map {
+            
+            print("---------------뷰컨----------------------")
+            print($0.sections.first?.items.map { $0.currentState.todo.isChecked })
+           
             return $0.sections }
             .bind(to: self.taskCollectionView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)

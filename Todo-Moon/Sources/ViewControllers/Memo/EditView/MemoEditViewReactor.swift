@@ -57,7 +57,7 @@ final class MemoEditViewReactor: Reactor {
             .map({ [weak self] memo in
                 
                 self?.provider.memoService.editMemo(memo: memo)
-
+                
                 return .dismiss
             })
         }
@@ -79,4 +79,4 @@ final class MemoEditViewReactor: Reactor {
         return state
     }
 }
-  
+
